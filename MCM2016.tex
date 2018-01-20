@@ -90,7 +90,7 @@ S_{2}=S_{2}(v)  \\
 \subsection{The effect of human body and body temperature on the model}
 %subsection 4.1
 We improved our model in view of the human body influence. Our improvement is mainly in the following aspects.
-\subsubsection{The influence of the human volume}%sub subsection 4.1.1
+\subsubsection{The influence of the human body temperature}%sub subsection 4.1.1
 The interior of the body is basically maintained at a constant temperature, and the temperature of the skin is close to the water in bathtub. So we can simplify the question.The simplified question is illustrated as floows.\\
 
 \begin{figure}[H]
@@ -102,8 +102,9 @@ The interior of the body is basically maintained at a constant temperature, and 
 \indent So we can use {\bf Newton's law of cooling} to calculate the speed of heat dissipation.\\
 \begin{equation}
 \begin{split}
-q&=h\Delta t	\\
-\phi &=qA=Ah\Delta t
+\Delta T&=|T_{w}-T_{f}| \\
+q&=h\Delta T	\\
+\phi &=qA=Ah\Delta T
 \end{split}
 \end{equation}
 \indent Where \textbf{\emph{q}} is the heat flux density. \textbf{\emph{h}} is the convection heat transfer coefficient of matter. \textbf{\emph{$\phi$}}  is heat transfer power (or heat transfer per unit time). \textbf{\emph{A}} is the heat transfer area.\\
@@ -111,14 +112,13 @@ q&=h\Delta t	\\
 \begin{equation}
 S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w-0.2106\text{(woman)} \end{cases}
 \label{s}
-\end{equation}                           ubsection{Assess the importance of initiatives in a plan}%subsection 4.2
-A plan has many initiatives, which has different emphasis on various fields. Thus, we develop a metric to assess the importance of each initiatives. Below is the metric:\\
-{\bf (1) } On the basis of APM, we can obtain SGI' after a plan is implemented.\\
-{\bf (2) }  Then we adopt qualitative analysis, only implement an initiative of a plan($\bf e.g.$ initiative i), therefore, we can obtain a new index ${SGI_i}'$.\\
-{\bf (3) } We can get the change in SGI\\
-$$\Delta {SGI_i}'={SGI'}-{SGI_i}'$$
-Through the qualitative analysis of each initiative, we obtain the change in SGI of each initiative.\\
-{\bf (4) } Compare the relative change$|\frac{\Delta SGI'}{SGI'}|$ on the basis of original SGI', and we can analyze the importance of each initiative. \\
+\end{equation}
+\indent According to formula \ref{skin}, the quantity of heat dissipated($dQ$) in unit time is:
+\begin{equation}
+	\frac{\mathrm{d} Q}{\mathrm{d} t}=\phi =qA=Sh\Delta T
+\end{equation}
+where \emph{h}=1.48,${T_{f}}=37.5^{\circ}$. \\
+\subsubsection{The influence of the body shape}
 
 %Section 5
 \section{Solutions for tasks }
