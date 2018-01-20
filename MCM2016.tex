@@ -55,7 +55,7 @@ Finally, we proved the reasonability and applicability of our model.\\
         \centering{Table 1:Notation} \\
         \begin{tabular}{p{3cm}|p{3cm}|p{6.6cm}}
         \hline
-        \bf{Symbol}	&\bf{uint}      &\bf{Meaning}\\
+        \rowcolor[gray]{0.9}\bf{Symbol}	&\bf{uint}      &\bf{Meaning}\\
         \hline
         $S_{1}$		& $m^2  $		 & The top surface area of the bathtub 	\\
         $S_{2}$		& $m^2  $		 & The bottom surface area of the bathtub 	\\
@@ -90,7 +90,7 @@ S_{2}=S_{2}(v)  \\
 \subsection{The effect of human body and body temperature on the model}
 %subsection 4.1
 We improved our model in view of the human body influence. Our improvement is mainly in the following aspects.
-\subsubsection{The influence of the human body temperature}%sub subsection 4.1.1
+\subsubsection{The influence of the heat conduction}%sub subsection 4.1.1
 The interior of the body is basically maintained at a constant temperature, and the temperature of the skin is close to the water in bathtub. So we can simplify the question.The simplified question is illustrated as floows.\\
 
 \begin{figure}[H]
@@ -116,15 +116,26 @@ S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w
 \indent According to formula \ref{skin}, the quantity of heat dissipated($dQ$) in unit time is:
 \begin{equation}
 	\frac{\mathrm{d} Q}{\mathrm{d} t}=\phi =qA=Sh\Delta T
+	\label{Q_skin}
 \end{equation}
 where \emph{h}=1.48,${T_{f}}=37.5^{\circ}$. \\
 \subsubsection{The influence of the body shape}
-
+The volume of the person in the water affects the height of the liquid. In order to discuss the influence on the liquid surface conveniently. We use the weight to estimate the volume of the body. We use $\rho =1.06\times10^{3}kg/m^{3}$ as the density of the human body, so the volume can be calculated:
+\begin{equation}
+v=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
+\end{equation}
 %Section 5
 \section{Solutions for tasks }
-\subsection{Task 1}%subsection 5.1
-We have developed our models in the section 3(SGI model) and section 4(PAM).\\
+\subsection{Different shapes of the bathtub}
+\subsubsection{Bathtub based on ovals}
+\begin{figure}[h]
+\centerline{\includegraphics[height=9cm]{oval.png}}
+\caption{The shape of bathtub based on ovals}
+\label{oval}	
+\end{figure}
+
 \subsection{Task 2}%subsection 5.2
+
 According to the current researches on urban planning of our chosen cities (Columbia.SC and Zhenjiang), we adopt quantization analysis of plans or policies. Then we obtain the following policy conclusion:\\
 %%政府政策
 \begin{table}[h]
