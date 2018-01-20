@@ -9,6 +9,7 @@
 \usepackage{mwe}
 \usepackage{graphicx}
 \usepackage{tabularx}
+\usepackage{float}
 \usepackage{indentfirst}
 \usepackage{amsmath}
 \title{}
@@ -17,7 +18,7 @@
 \begin{document}
 
 \begin{abstract}%摘要
-%hhh小爷到此一游
+
 
 \indent  In recent years, with he rapid development in economy and explosive growth in population, environment pollution and depletion of resources have been aggravated day by day. Smart Growth was then put forward. Lots of cities have drawn up the development plans on basis of the combination of ten principles for Smart Growth and their own conditions. Our work is to evaluate the success of each city in Smart Growth and provide a guidance for plan making.Meanwhile, we need to measure the success of our smart growth plan. Therefore, we define the "Smart Growth Index" (SGI) to measure the success of smart growth and development plans of a city. \\
 \indent  Our model establishes a Detail group of 52 indictors, which reflects the ten principles for smart growth and the three E's of sustainability. On basis of this, we can assess the success of smart growth of a city. In the construction of SGI model, we use linear aggregation to combine individual variables into the theme scores. Compensability of linear aggregation ensures fair assessment of different cities which have different emphasis in urban development. Then we use geometric aggregation to combine theme scores into SGI. Low compensability of geometric aggregation requires a city to develop evenly in all themes. We use entropy method to determine weights of indictors or themes, which avoid subjectivity. SGI model has an all-round and objective assessment of the success of smart growth of a city.\\
@@ -91,12 +92,12 @@ S_{2}=S_{2}(v)  \\
 We improved our model in view of the human body influence. Our improvement is mainly in the following aspects.
 \subsubsection{The influence of the human volume}%sub subsection 4.1.1
 The interior of the body is basically maintained at a constant temperature, and the temperature of the skin is close to the water in bathtub. So we can simplify the question.The simplified question is illustrated as floows.\\
-\begin{figure}
+
+\begin{figure}[H]
 \centerline{\includegraphics[height=6cm]{skin.png}}
-\caption{aaa}
+\caption{Heat conduction model of human body}
 \label{skin}
 \end{figure}
-
 \indent We can assume that the temperature of the skin is the same as the water. We select the temperature of the rectum about 37.5 degrees as the body temperature. The problem can be simplified as the skin heat dissipating to the interior of the body.\\
 \indent So we can use {\bf Newton's law of cooling} to calculate the speed of heat dissipation.\\
 \begin{equation}
@@ -110,11 +111,7 @@ q&=h\Delta t	\\
 \begin{equation}
 S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w-0.2106\text{(woman)} \end{cases}
 \label{s}
-\end{equation}
-\indent We can use the formula (\ref{s}) to get the rate of heat transfer from water to the human body\\
-\subsubsection{The body's absorption of heat}
-
-\subsection{Assess the importance of initiatives in a plan}%subsection 4.2
+\end{equation}                           ubsection{Assess the importance of initiatives in a plan}%subsection 4.2
 A plan has many initiatives, which has different emphasis on various fields. Thus, we develop a metric to assess the importance of each initiatives. Below is the metric:\\
 {\bf (1) } On the basis of APM, we can obtain SGI' after a plan is implemented.\\
 {\bf (2) }  Then we adopt qualitative analysis, only implement an initiative of a plan($\bf e.g.$ initiative i), therefore, we can obtain a new index ${SGI_i}'$.\\
