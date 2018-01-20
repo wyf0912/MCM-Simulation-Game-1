@@ -83,50 +83,6 @@ S_{2}=S_{2}(v)  \\
 
 \subsection{Liquid surface heat loss model}%subsection 3.1理论框架
 
-\begin{table}
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-\centering
-\centering{Table 1:City Smart Growth indicator system weight}
-\begin{tabular}{p{0.4cm}|p{9cm}|p{1.5cm}|p{1.5cm}|p{1.7cm}}
-\hline
-\bf I	& {\bf Indictors}			 &  \bf entropy		& \bf availing value		& \bf weight (\%) \\	
-\hline
-\rowcolor[gray]{0.9}	& Group of indictors for ecnomic development			& 		& 		& 22.925 \\	
-\hline
- 1		& GDP( 100 million yuan)		& 0.99001		& 0.00999		& 7.59925 \\	
-2		& per capita GDP(yuan/person)		& 0.99044		& 0.00956		& 7.27817 \\	
-
-	&\bf  SUM			& 		& 0.1314		& 100 \\	
-\hline
-\rowcolor[gray]{0.9}	& Group of indictors for social development			& 		& 		& 32.8844 \\	
-\hline
-15		& population density(person/${km}^2$)		& 0.99998		& 0.000021		& 0.01095 \\	
-
-	& \bf SUM			& 		& 0.188481		& 100 \\	
-\hline
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-\centering
-\begin{tabular}{p{0.4cm}|p{8cm}|p{1.5cm}|p{1.5cm}|p{1.7cm}}
-\hline
-\bf I	& \bf Indictors			 &  \bf entropy		& \bf availing value		& \bf weight (\%) \\	
-\hline
-\rowcolor[gray]{0.9}	& Group of indictiors for environment optimization			& 		& 		& 22.6476 \\	
-\hline
-31		& per capita green spaces($m^2$)		& 0.9962		& 0.0038		& 2.927595 \\	
-\hline
-\hline
-\end{tabular}
-\end{table}
-
-
-
 
 %Section 4
 \section{Factors that affect the model}
@@ -134,7 +90,6 @@ S_{2}=S_{2}(v)  \\
 %subsection 4.1
 We improved our model in view of the human body influence. Our improvement is mainly in the following aspects.
 \subsubsection{The influence of the human volume}%sub subsection 4.1.1
-\subsubsection{The body's absorption of heat}
 The interior of the body is basically maintained at a constant temperature, and the temperature of the skin is close to the water in bathtub. So we can simplify the question.The simplified question is illustrated as floows.\\
 \begin{figure}
 \centerline{\includegraphics[height=6cm]{skin.png}}
@@ -156,13 +111,8 @@ q&=h\Delta t	\\
 S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w-0.2106\text{(woman)} \end{cases}
 \label{s}
 \end{equation}
-\indent We can use the formula (\ref{s}) to get the rate of heat transfer from water to the human body
-\indent 
-\noindent
-{\bf (1) } Due to the established detailed group of indictors, we assume that the relationship between plan(policy) and indictor is one to one, even though the existence of the situation of n to one, we can also simplify the relationship as one to one on the basis of SGI model.\\
-{\bf (2) } We assume that the relationship between plan(policy) and indictor is linear to simplify our model.\\
-{\bf (3) }Quantification of plan(policy) is directly reflected in the data of indictors of a city.
-The relationship between plan(policy) and indictor is reflected in data of years in a city.\\
+\indent We can use the formula (\ref{s}) to get the rate of heat transfer from water to the human body\\
+\subsubsection{The body's absorption of heat}
 
 \subsection{Assess the importance of initiatives in a plan}%subsection 4.2
 A plan has many initiatives, which has different emphasis on various fields. Thus, we develop a metric to assess the importance of each initiatives. Below is the metric:\\
