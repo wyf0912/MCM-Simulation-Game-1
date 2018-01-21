@@ -5,6 +5,12 @@
         titlepage = false, abstract = true}
 \problem{E}
 
+\makeatletter % `@' now normal "letter"   %follpw as section test
+\@addtoreset{equation}{section}
+\makeatother  % `@' is restored as "non-letter"
+\renewcommand\theequation{\oldstylenums{\thesection}%
+                   .\oldstylenums{\arabic{equation}}}
+
 \usepackage{palatino}
 \usepackage{mwe}
 \usepackage{graphicx}
@@ -48,6 +54,7 @@ Finally, we proved the reasonability and applicability of our model.\\
 \noindent
 {\bf (1) } \textbf{Evaporation will result in no loss of water.} The loss of water from evaporation is too little to consider, so we ignore the change of quantity of water.\\
 {\bf (2) } \textbf{Consider the energy of water in 36 ${^\circ}C$ as the energy reference.} For we can arbitrarily set our energy reference to be zero.\\
+{\bf (3) } \textbf{加入水的温度是固定的} \\
 
 \section{Symbol Description}
 \begin{table}[H]
@@ -76,10 +83,10 @@ Finally, we proved the reasonability and applicability of our model.\\
         \hline
         \rowcolor[gray]{0.9}\bf{Symbol}	&\bf{uint}      &\bf{Meaning}\\
         \hline
-        $V(h)$			& $m^3  $		 & The relationship between volume of water and  \\
-        $S_{1}(h)$		& $m^2  $		 & The top surface area of the bathtub 	\\
-        $S_{2}(h)$		& $m^2  $		 & The bottom surface area of the bathtub 	\\
-        $S_{3}(h)$		& $m^2  $		 & The side surface area of the bathtub 	\\
+        $V(h)$			& $m^3  $		 & The relationship between volume of water and liquid height \\
+        $S_{1}(h)$		& $m^2  $		 & The top surface area of the liquid 	\\
+        $S_{2}(h)$		& $m^2  $		 & The lower surface area of the bathtub 	\\
+        $S_{3}(h)$		& $m^2  $		 & The side contact area of the bathtub and liquid 	\\
         \emph{S}	& $m^2  $		 & The surface area of the body\\
         ${h_{p}}$	& $cm	$        & height of a person \\
         \emph{w}	& $kg	$        & weight of a person \\
@@ -87,32 +94,47 @@ Finally, we proved the reasonability and applicability of our model.\\
         $t$		& $ ^{\circ}C  $		 & Surface temperature of water \\
         $\theta$		& $^{\circ}C$		 & Dry bulb temperature of air\\
         $\beta$		& $W/(m^{2}\cdot hP_{a})$		 & Evaporation coefficient\\
-        $Q_{upper}$		& $J$		 & Evaporation coefficient\\
+        $Q_{upper}$		& $J$		 & Bathtub top surface unit time heat dissipation\\
 		$Q_{side}$		& $J$		 & Bathtub side surface unit time heat dissipation\\
-		$S_{upper}$		& $m^2$		 & Surface area of bathtub water\\
-		$S_{side}$		& $m^2$		 & Bathtub Side surface Area\\
-
-        \hline
+		        \hline
         \end{tabular}
         \end{table}
 
 %Section 3
 \section{Heat Dissipation Model}
 In order to analyze the situation of heat dissipation. 
-We first analyze the bathtub.\\
-\indent The effect of a bathtub on heat loss is mainly in material and shape.\\
-\indent Because different bathtubs have different shapes and attributes, We use functions to describe the relationship between the surface area, the surface height and the volume of the surface area.
+We need to start from the bathtub.
+The effect of a bathtub on heat loss is mainly in material and shape.\\
+\indent The surface area of the liquid is variable because of the different shapes and attributes about bathtubs. Likewise the contact area of liquid and bathtub. Therefore We use functions to describe the relationship between the surface area of liquid, the liquid surface height and the contact area of liquid and bathtub. \\
+\indent We use these abstract expression to avoid the effect of exact shapes and attributes on the model.
 \begin{equation}
 \begin{split}
-h=H(v)  \\
+h=H(h)  \\
 S_{1}=S_{1}(v) \\
 S_{2}=S_{2}(v)  \\
 \end{split}
 \end{equation}
-\indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface.
-
-\subsection{Liquid surface heat loss model}%subsection 3.1理论框架
-
+\indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface.So we So we decompose the model into two parts:\\
+\indent \indent1) Liquid surface heat loss model\\
+\indent \indent2) contact area of liquid and bathtub heat loss model
+\subsection{Liquid surface heat loss model}
+\indent In unit time, the heat dissipation of the water surface is \cite{1}
+\begin{equation}
+ dQ=dQ_{a}+dQ_{b}+dQ_{c}=[\alpha (t-\theta)+\beta ({p}''_{v}-p_{v})+\varepsilon \sigma (t+273)^{4})]dS 
+\end{equation}
+\indent \indent \indent $\varepsilon$ is the emissivity. The value is 0.97\\
+\indent \indent \indent $\sigma$ is a constant. The value is $5.6\times 10^{-8}$\\
+\indent \indent \indent In the actual process, $\beta$ and $\alpha$ can be obtained by General formula:\\
+\begin{equation}
+ \beta=\sqrt{[22.0+12.5W^{2}+2.0(t-\theta)}
+\end{equation}
+\begin{equation}
+ \frac{\alpha}{\beta}=b=\frac{P_{a}C_{p}}{0.623L}
+\end{equation}
+\indent $C_{p}$ is the specific heat capacity of dry air. As the temperature changes, there is little change in the value. So we take the value as the temperature equals to 300k.\\
+\begin{equation}
+C_{p}=1.005KJ/(kg\cdot K)
+\end{equation}
 \section{Model of hot water addition}
 \subsection{Changes in the volume of water in a bathtub}
 
