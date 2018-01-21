@@ -81,7 +81,7 @@ Finally, we proved the reasonability and applicability of our model.\\
         $S_{2}(h)$		& $m^2  $		 & The bottom surface area of the bathtub 	\\
         $S_{3}(h)$		& $m^2  $		 & The side surface area of the bathtub 	\\
         \emph{S}	& $m^2  $		 & The surface area of the body\\
-        \emph{h}	& $cm	$        & height of a person \\
+        ${h_{p}}$	& $cm	$        & height of a person \\
         \emph{w}	& $kg	$        & weight of a person \\
         $\alpha$		& $ W/(m^{2}\cdot^{\circ}C)  $		 & Heat dissipation coefficient\\
         $t$		& $ ^{\circ}C  $		 & Surface temperature of water \\
@@ -177,7 +177,7 @@ a(z)=\frac{A}{2}-d+\frac{d}{{H}^{2}}{z}^{2}
 b(z)=\frac{B}{2}-d\frac{B}{A}+\frac{Bd}{A{H}^{2}}{z}^{2}
 \end{equation}\\
 \textbf{Calculation of the volume of water} \\\\
-\indent The volume of the ellipsoid cylinder is
+\indent The volume of the small cylinder is
 \begin{equation}
 dV=Sdz=\pi a(z)b(z)
 \end{equation}
@@ -189,8 +189,18 @@ V(h)&=\int dV=\int Sdz=\int_{0}^{h}\pi a(z)b(z)dz \\
 \label{V}
 \end{split}
 \end{equation}
-\indent We can get the relationship between the volume of water and the height of the liquid surface by replacing the bathtub size into the formula (\ref{V}).\\\\
+\indent We can get relationship between the volume of water and the height of liquid surface by replacing the bathtub size into the formula (\ref{V}).\\\\
 \textbf{Calculation of the contact area of water with the bathtub and air} \\\\
+\indent Without considering the effect of person, the upper and lower surface of the liquid contact are standard ovals.\\
+\indent The area of upper surface is\\
+\begin{equation}
+S_{1}=\frac{\pi AB}{4}
+\end{equation}
+\indent And area of the lower surface is\\
+\begin{equation}
+	S_{1}=\frac{\pi (A-2d)(B-2d\frac{B}{A})}{4}
+\end{equation}
+\indent In order to calculate the contact area between the liquid and side of the bathtub, we use the calculus method.
 
 \subsubsection{Bathtub based on circles}
 \begin{figure}[H]
