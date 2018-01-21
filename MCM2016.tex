@@ -59,6 +59,9 @@ Finally, we proved the reasonability and applicability of our model.\\
 		${P}''_{v}$		& $hP_{a}$		 & Vapor pressure of thin saturated layer on water surface  &test\\
 		$P_{v}$		& $hP_{a}$		 & Water vapor partial pressure in wet air\\
 		$P_{a}$		& $hP_{a}$		 & Atmospheric pressure  &test\\
+		$L$		& $kj/kg$		 & heat of water vaporization&2500\\
+		$\varepsilon$		& 		 & emissivity&0.97\\
+		$C_{p}$		& $KJ/(kg\cdot K)$		 & Specific heat capacity of dry air at 300k &1.005\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -81,7 +84,11 @@ Finally, we proved the reasonability and applicability of our model.\\
         $t$		& $ ^{\circ}C  $		 & Surface temperature of water \\
         $\theta$		& $^{\circ}C$		 & Dry bulb temperature of air\\
         $\beta$		& $W/(m^{2}\cdot hP_{a})$		 & Evaporation coefficient\\
-        $Q_{upper}$		& $m^2  $		 & The side surface area of the bathtub\\
+        $Q_{upper}$		& $J$		 & Evaporation coefficient\\
+		$Q_{side}$		& $J$		 & Bathtub side surface unit time heat dissipation\\
+		$S_{upper}$		& $m^2$		 & Surface area of bathtub water\\
+		$S_{side}$		& $m^2$		 & Bathtub Side surface Area\\
+
         \hline
         \end{tabular}
         \end{table}
@@ -91,7 +98,7 @@ Finally, we proved the reasonability and applicability of our model.\\
 In order to analyze the situation of heat dissipation. 
 We first analyze the bathtub.\\
 \indent The effect of a bathtub on heat loss is mainly in material and shape.\\
-Because different bathtubs have different shapes and attributes, We use functions to describe the relationship between the surface area, the surface height and the volume of the surface area.
+\indent Because different bathtubs have different shapes and attributes, We use functions to describe the relationship between the surface area, the surface height and the volume of the surface area.
 \begin{equation}
 \begin{split}
 h=H(v)  \\
@@ -99,7 +106,7 @@ S_{1}=S_{1}(v) \\
 S_{2}=S_{2}(v)  \\
 \end{split}
 \end{equation}
-
+\indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface.
 
 \subsection{Liquid surface heat loss model}%subsection 3.1理论框架
 
