@@ -52,8 +52,22 @@ Finally, we proved the reasonability and applicability of our model.\\
 \begin{table}[h]
         \setlength{\abovecaptionskip}{0pt}
         \setlength{\belowcaptionskip}{0pt}
-        \centering{Table 1:Notation} \\
-        \begin{tabular}{p{3cm}|p{3cm}|p{6.6cm}}
+				\centering{Table 1:Constants}\\
+        \begin{tabular}{p{2cm}|p{2cm}|p{7.5cm}|p{2cm}}
+		\hline
+		\rowcolor[gray]{0.9}\bf{Symbol}	&\bf{uint}      &\bf{Meaning}&\bf{Symbol1}	\\
+		${P}''_{v}$		& $hP_{a}$		 & Vapor pressure of thin saturated layer on water surface  &test\\
+		$P_{v}$		& $hP_{a}$		 & Water vapor partial pressure in wet air\\
+		$P_{a}$		& $hP_{a}$		 & Atmospheric pressure  &test\\
+		\hline
+		\end{tabular}
+	\end{table}
+
+\begin{table}[h]
+        \setlength{\abovecaptionskip}{0pt}
+        \setlength{\belowcaptionskip}{0pt}
+                \centering{Table 2:Notation} \\
+        \begin{tabular}{p{2cm}|p{2cm}|p{10cm}}
         \hline
         \rowcolor[gray]{0.9}\bf{Symbol}	&\bf{uint}      &\bf{Meaning}\\
         \hline
@@ -63,6 +77,11 @@ Finally, we proved the reasonability and applicability of our model.\\
         \emph{S}	& $m^2  $		 & The surface area of the body\\
         \emph{h}	& $cm	$        & height of a person \\
         \emph{w}	& $kg	$        & weight of a person \\
+        $\alpha$		& $ W/(m^{2}\cdot ^{\circ}C)  $		 & Heat dissipation coefficient\\
+        $t$		& $ ^{\circ}C  $		 & Surface temperature of water \\
+        $\theta$		& $^{\circ}C$		 & Dry bulb temperature of air\\
+        $\beta$		& $W/(m^{2}\cdot hP_{a})$		 & Evaporation coefficient\\
+        $Q_{upper}$		& $m^2  $		 & The side surface area of the bathtub\\
         \hline
         \end{tabular}
         \end{table}
