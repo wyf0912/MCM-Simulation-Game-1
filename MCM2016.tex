@@ -49,7 +49,7 @@ Finally, we proved the reasonability and applicability of our model.\\
 {\bf (1) } The real change of indictors corresponds to policies.\\
 
 \section{Symbol Description}
-\begin{table}[h]
+\begin{table}[H]
         \setlength{\abovecaptionskip}{0pt}
         \setlength{\belowcaptionskip}{0pt}
 				\centering{Table 1:Constants}\\
@@ -63,7 +63,7 @@ Finally, we proved the reasonability and applicability of our model.\\
 		\end{tabular}
 	\end{table}
 
-\begin{table}[h]
+\begin{table}[H]
         \setlength{\abovecaptionskip}{0pt}
         \setlength{\belowcaptionskip}{0pt}
                 \centering{Table 2:Notation} \\
@@ -157,12 +157,34 @@ We model and analysis several different shapes of bathtubs.
 \caption{The shape of bathtub based on ovals}
 \label{oval}	
 \end{figure}
+The elliptical long axis on the bottom of the bathtub is $A$, the short axis is $B$, the height of the whole bathtub is $h$, and the lower bottom long axis is $A-2d$.\\
+\indent We divide the bathtub into an infinite number of elliptical columns with a height of $dz$, with a long semi-axis of each elliptical element\\
+\begin{equation}
+a(z)=\frac{A}{2}-d+\frac{d}{{H}^{2}}{z}^{2}
+\end{equation}
+\indent Short semi-axis of each elliptical element is
+\begin{equation}
+b(z)=\frac{B}{2}-d\frac{B}{A}+\frac{Bd}{A{H}^{2}}{z}^{2}
+\end{equation}
+\indent So the volume of the ellipsoid cylinder is
+\begin{equation}
+dV=Sdz=\pi a(z)b(z)
+\end{equation}
+\indent The relationship between the volume of water in the bathtub and the height of the liquid surfac	e is
+\begin{equation}
+\begin{split}
+V&=\int dV=\int Sdz=\int_{0}^{h}\pi a(z)b(z)dz \\
+&=\int_{0}^{h}\pi(\frac{A}{2}-d+\frac{d{z}^{2}}{{H}^{2}})(\frac{B}{2}-d\frac{B}{A}+\frac{dB{z}^{2}}{A{H}^{2}})dz
+\label{V}
+\end{split}
+\end{equation}
+\indent We can get the relationship between the volume of water and the height of the liquid surface by replacing the bathtub size into the formula (\ref{V}).
 
 \subsubsection{Bathtub based on circles}
 \begin{figure}[H]
-	\centerline{\includegraphics[height=8cm]{circle.png}}
-	\caption{The shape of bathtub based on circles}
-	\label{circle}	
+\centerline{\includegraphics[height=8cm]{circle.png}}
+\caption{The shape of bathtub based on circles}
+\label{circle}	
 \end{figure}
 
 \subsection{Task 2}%subsection 5.2
