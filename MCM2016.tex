@@ -207,16 +207,56 @@ Q_{side}&=\int_{side}dQ\\
 \section{Solutions for tasks}
 \subsection{Model Implementation with Computer}
 \indent In the above, We've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
-\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.
+\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
+\indent The figure below shows the process of simulation: \begin{figure}[H]
+\centerline{\includegraphics[height=7cm]{process.png}}
+\caption{the process of simulation}                  %流程图
+\label{oval}	
+\end{figure}
+
 \subsection{model testing}			%6.2 model test
 \indent First, we need to verify the accuracy of the heat dissipation model.
 We want to verify whether the model of the temperature change over time is in accordance with the actual situation.\\
 \indent We set the bath time as half an hour. And we don't add hot water or bubble bath additive in the bathtub. \\
-\indent picture!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+\begin{figure}[H]
+\centerline{\includegraphics[height=9cm]{Figure_1-0.png}}
+\caption{changes in temperature over time}
+\label{oval}	
+\end{figure}
 \indent The model implementation with computer is shown in the figure.
-We can get that the temperature in the bathtub has fallen as time goes on.It drops 4.5$^{\circ}C$ as half an hour in the bathtub. And in the indoor environment, we find the temperature of most bathtub without constant temperature system drops from 3 to 5$^{\circ}C$ in half an hour. Our   
-
-
+We can get that the temperature in the bathtub has fallen as time goes on.It drops 4.5$^{\circ}C$ as half an hour in the bathtub. And in the indoor environment, we find the temperature of most bathtub without constant temperature system drops from 3 to 5$^{\circ}C$ in half an hour. \\ \indent Our results is within this range. So the model fits the reality.               
+	%模型的检验，没有加热水时候浴缸内水温度降低的趋势符合现实
+\subsection{solve the model}%模型的求解，找到一个适合的值，使水温变化小
+\indent As we mentioned in the model of hot water addition, when the inflow of water per unit time changes, the heat that the bathtub get is different. So we can change the amount of inflowing water during unit time to make the temperature of bathtub different.\\ 
+\indent We want to find a water inflowing per unit time which make the temperature is kept near the initial temperature of the bathtub. 
+So we use the minimum dichotomy by constantly changing the amount of inflowing water during unit time. \\			
+		%假装自己使用了二分法来找这个值
+\indent And finally we found the water inflowing per unit time through more than a dozen iterations as $V_{best}$.\\
+\begin{equation}
+	V_{best}=40ml/s
+\end{equation}
+\indent The figure below shows the image of temperature varying with time when hot water is added.
+\begin{figure}[H]	%图1.3
+\centerline{\includegraphics[height=8cm]{Figure_1-3.png}}
+\caption{temperature varying with time when hot water is added}
+\label{oval}	
+\end{figure}
+\indent When hot water is added at in $V_{best}$, the temperature will only change in a very small range. It means the temperature will nearly not change.\\
+%温度下降和温度稳定的比较
+\indent Next, we want to find what is the result of adding hot water as $V_{best}$ to the model. So we made a comparison between temperature varying with time when hot water is added and not added. As shown in the picture:
+\begin{figure}[H]	%图1.1
+\centerline{\includegraphics[height=8cm]{Figure_1-4.png}}
+\caption{changes in temperature over time}
+\label{oval}	
+\end{figure}
+\indent The curves tell that our hot water is set perfectly, the temperature will neither get too high nor get too low. And the goal of keeping the temperature as close as possible to the initial temperature is achieved.
+\subsection{Verifying the stability of the model}%验证模型的稳定性\indent In real life, everyone's bath time is different. We should consider that some persons want to bath for longer time. So we should prolong the abscissa with more bath time to verify the stability of the model.\\
+\indent We prolong the bath time to 150 minutes. The figure below shows the change when time prolong.\begin{figure}[H]	%图1.3
+\centerline{\includegraphics[height=8cm]{Figure_1-1.png}}
+\caption{temperature varying with time when hot water is added}
+\label{oval}	
+\end{figure}
+\indent Therefore, when hot water is not added, the temperature will decrease with time constantly, even the temperature will be lower than the room temperature set previously.But when hot water is added, the temperature can also be kept well. So our model is stable and effective.
 %Section 7
 \section{Factors that affect the model}
 \subsection{Different shapes of the bathtub}
