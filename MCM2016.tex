@@ -45,9 +45,13 @@ Finally, we proved the reasonability and applicability of our model.\\
 %Section 1
 \section{Introduction}
 \subsection{Background}%subsection 1.1
-\indent the traditional bathtub is a simple waterproof container.the bathtub temperature is decreasing and people need to constantly add hot water to maintain the temperature.\\\indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.
+\indent the traditional bathtub is a simple waterproof container.
+the bathtub temperature is decreasing and people need to constantly add hot water to maintain the temperature.\\
+\indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.
 \subsection{Our work}
-\indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.\\\indent To solve this problem, we need to consider the impact of the bathtub shape and size on this model. Person's shape,size and temperature are also under consideration.
+
+\indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.\\
+\indent To solve this problem, we need to consider the impact of the bathtub shape and size on this model. Person's shape,size and temperature are also under consideration.
 
 %Section 2
 \section{Assumptions}
@@ -116,9 +120,9 @@ The effect of a bathtub on heat loss is mainly in material and shape.\\
 \indent We use these abstract expression to avoid the effect of exact shapes and attributes on the model.
 \begin{equation}
 \begin{split}
-h=H(h)  \\
-S_{1}=S_{1}(v) \\
-S_{2}=S_{2}(v)  \\
+h=H(v)  \\
+S_{1}=S_{1}(h) \\
+S_{2}=S_{2}(h)  \\
 \end{split}
 \end{equation}
 \indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. So we So we decompose the model into two parts:\\
@@ -151,7 +155,7 @@ Q_{upper}&=\int_{upper} dQ\\
 \end{split}
 \end{equation}
 
-\subsection{side area of bathtub heat loss model} 	%4.2
+\subsection{Side area of bathtub heat loss model} 	%4.2
 \indent The heat dissipated area is the contact part between bathtub and liquid.So we just need to think about the effect of contact area. \\ \indent For the water in the side surface of the bathtub is not in direct contact with the air, there will be no evaporation. Therefore there will not be $ dQ_{b} $ in the equation (4.2). Considering of the reflex of thermal radiation between water and the side surface, $dQ_{c}$ will change.\\ \indent The material of the side surface of the bathtub is acrylic. The index of refraction of acrylic is $n_{1}\approx 1.4$, the index of refraction of water is $ n_{0}\approx 1.33 $.\\ \indent So the reflection coefficient is 
 \begin{equation}
 	 R=\frac{(n_{0}-n_{1})^{2}}{(n_{0}+n_{1})^{2}}=\frac{(1.4-1.33)^{2}}{(1.4+1.33)^2}=0.06 
@@ -168,7 +172,7 @@ Q_{side}&=\int_{side}dQ\\
 &=[\alpha (t-\theta)+0.94\varepsilon \sigma (t+273)^{4}]S_{3}\\
 \end{split}
 \end{equation}
-\subsection{the bathtub heat loss model} 	%4.2
+\subsection{The bathtub heat loss model} 	%4.2
 
 \indent Just as I mentioned above, the water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. \\
 
@@ -249,11 +253,22 @@ S_{1}=\frac{\pi AB}{4}
 \end{equation}
 \indent And area of the lower surface is\\
 \begin{equation}
-	S_{2}=\frac{\pi (A-2d)(B-2d\frac{B}{A})}{4}
+	S_{2}=\pi (\frac{A}{2}+(\frac{h^{2}}{H^{2}}-1)d)(\frac{B}{2}+(\frac{h^{2}}{H^{2}}-1)d\frac{B}{A})
 \end{equation}
-\indent In order to calculate the contact area between the liquid and side of the bathtub, we use the calculus method.
-
-
+\indent In order to calculate the contact area between the liquid and side of the bathtub, we use the calculus method.\\
+\indent The area of the small cylinder is 
+\begin{equation}
+ds=\sqrt{1+(\frac{\partial a(z)}{\partial z}^{2})} L(z)
+\label{ds}
+\end{equation}
+\indent where $a(z)$ is the long axis of a cross section ellipse with a height of $h$ and $L(x)$ is the circumference of the ellipse of the cross section. And $L(x)$ is
+\begin{equation}
+L(z)=\pi (\frac{3}{2}(a(z)+b(z))-\sqrt{a(z)b(z)})
+\end{equation} 
+\indent So we can get the lateral area through the integral (\ref{ds})
+\begin{equation}
+	S_{3}=\int ds=\int_{0}^{h}\pi \sqrt{1+\frac{4d^{2}z^{2}}{h^{4}}}(\frac{3}{2}(a(z)+b(z))-\sqrt{a(z)b(z)})dz
+\end{equation}
 
 \subsubsection{Bathtub based on circles}
 \begin{figure}[H]
@@ -261,9 +276,34 @@ S_{1}=\frac{\pi AB}{4}
 \caption{The shape of bathtub based on circles}
 \label{circle}	
 \end{figure}
-\noindent
+\indent Also without considering the effect of person, the upper and lower surface of the liquid contact are standard ovals.\\
+\indent The area of upper surface is\\
+\begin{equation}
+S_{1}=\pi (R+(\frac{h^{2}}{H^{2}}-1)d)^{2}
+\end{equation}
+\indent And area of the lower surface is\\
+\begin{equation}
+S_{2}=\pi (R-d)^{2}
+\end{equation}
+\indent where $R$ is the upper surface area of the bathtub, $H$ is the height of bathtub, $d$ is the the difference between the radius of the upper surface and the lower surface, and $h$ is the height of the liquid surface.\\ 
+\indent In order to calculate the contact area between the liquid and side of the bathtub, we use the calculus method like the oval-based bathtub.\\
+And we can get the area of side surface $S_{3}$ of the bathtub.
+\begin{equation}
+	S_{3}=\int ds=\int_{0}^{h}\pi \sqrt{1+\frac{4d^{2}z^{2}}{h^{4}}}({3}r(z))-r(z))dz
+\end{equation}
+\indent where $r(z)$ is
+\begin{equation}
+	R+(\frac{h^{2}}{H^{2}}-1)d
+\end{equation}
+\\\\
+\noindent\
 \textbf{Simulation Result}\\\\
-We
+We compare two ways of adding hot water. And when  
+\begin{figure}[H]
+	\centerline{\includegraphics[height=10cm]{Figure_4-2.png}}
+	\caption{Comparison of two kinds of water adding methods}
+	\label{circle}	
+\end{figure}
 
 \subsection{The effect of human body and body temperature on the model}
 %subsection 4.1
@@ -297,12 +337,17 @@ S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w
 	\label{Q_skin}
 \end{equation}
 where \emph{h}=1.48,${T_{f}}=37.5^{\circ}$. \\
-\subsubsection{The influence of the body shape}
+\subsubsection{The influence of the body shape and action}
 The volume of the person in the water affects the height of the liquid. In order to discuss the influence on the liquid surface conveniently. We use the weight to estimate the volume of the body. We use $\rho =1.06\times10^{3}kg/m^{3}$ as the density of the human body, so the volume can be calculated:
 \begin{equation}
 v=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \end{equation}
-\subsubsection{result}
+\indent If we consider the effect of the body volume, we need to correct of the height of the liquid surface. We assume 65\% volume of the body is in the water. So the height of the liquid surface should be corrected to\\
+\begin{equation}
+	h=H(v_{water}+0.65v_{body})
+\end{equation}
+
+\subsubsection{Result}
 
 %Section 6
 \section{Sensitivity analysis}
