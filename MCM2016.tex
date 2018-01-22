@@ -140,8 +140,11 @@ C_{p}=1.005KJ/(kg\cdot K)
 \begin{equation}
 \begin{split}
 Q_{upper}&=\int_{upper} dQ\\
+&= \int_{upper}\alpha (t-\theta)+\beta ({p}''_{v}-p_{v})+\varepsilon \sigma (t+273)^{4}dS	\\
+&=[\alpha (t-\theta)+\beta ({p}''_{v}-p_{v})+\varepsilon \sigma (t+273)^{4}]\cdot S_{1}\
 \end{split}
 \end{equation}
+\subsection{side area of bathtub heat loss model} 	%4.2
 \indent The heat dissipated area is the contact part between bathtub and liquid.So we just need to think about the effect of contact area. For the water in the side surface of the bathtub is not in direct contact with the air, there will be no evaporation. Therefore there will not be $ dQ_{b} $ in the 
 
 \section{Model of hot water addition}
@@ -192,9 +195,11 @@ S_{1}=\frac{\pi AB}{4}
 \end{equation}
 \indent And area of the lower surface is\\
 \begin{equation}
-	S_{1}=\frac{\pi (A-2d)(B-2d\frac{B}{A})}{4}
+	S_{2}=\frac{\pi (A-2d)(B-2d\frac{B}{A})}{4}
 \end{equation}
 \indent In order to calculate the contact area between the liquid and side of the bathtub, we use the calculus method.
+
+
 
 \subsubsection{Bathtub based on circles}
 \begin{figure}[H]
@@ -202,7 +207,9 @@ S_{1}=\frac{\pi AB}{4}
 \caption{The shape of bathtub based on circles}
 \label{circle}	
 \end{figure}
-\subsubsection{result}
+\noindent
+\textbf{Simulation Result}\\\\
+We
 
 \subsection{The effect of human body and body temperature on the model}
 %subsection 4.1
@@ -243,194 +250,21 @@ v=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \end{equation}
 \subsubsection{result}
 
-
-\subsection{Task 2}%subsection 5.2
-
-According to the current researches on urban planning of our chosen cities (Columbia.SC and Zhenjiang), we adopt quantization analysis of plans or policies. Then we obtain the following policy conclusion:\\
-%%政府政策
-\begin{table}[h]
-
-\centering
-\centering{Table 2:Current Plan}
-\begin{tabular}{p{5.2cm}|p{1.2cm}|p{5.2cm}|p{1.2cm}}
-\hline
-\bf Zheiang 5 years	 & \bf change	 & \bf Columbia 5 years	& \bf change \\
-\hline
- per capita GDP(yuan/person)	& +8\%	& per capita disposable income( yuan)	& +5\% \\
-production of tertiary industry ratio(\%)	& to 50\%	& per capita green spaces($m^2$)	& +4\% \\
-per capita disposable income(yuan)	& +8.5\%	& average wages of staff(yuan)	& +5\% \\
-tourist income ratio in GDP(\%)	& +100\%	& sewage treatment ratia(\%)	& to 99\% \\
-total export(100 million dollars)	& +50\%	& high school enrollment(10000 person)	& +8\% \\
-amount of doctors (per ten thousand)	& +10\%	& per capita living space($m^2$)	& +7\% \\
-per captia area of roads(urban,$m^2$)	& +10\%	& green cover in built up area(\%)	& +5\% \\
-\hline
-\end{tabular}
-\end{table}
-
-\noindent Using SGI model, we can obtain SGI of two cities after implementing the current plan. Also, we can obtain original SGI on the basis of original data. Based on the method in section 4, we can get the following result by way of matlab.\\
-
-%%政府政策中SGI总和
-\begin{table}[h]
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-\centering{Table 3:SGI of Current Plan}
-\begin{tabular}{p{3.3cm}|p{3cm}|p{3cm}|p{3.3cm}}
-\hline
-City	& $SGI_0$ (2014)	& $SGI$ (2020)	& $\Delta SGI$ \\
-\hline
-Zhenjiang	& 12.5126	& 14.3771	& 1.8645 \\
-columbia	& 13.962	& 14.1089	& 0.1469 \\
-\hline
-\end{tabular}
-\end{table}
-%%
-\noindent Through the analysis of the relative change in SGI of two cities, we can assess the success of the growth plan.\\
-Apparently, SGI of two cities both increases after implementing their own current growth plan. \\
-Thus, their current growth plan is both successful.\\
-\subsection{Task 3}%subsection 5.3
-\subsubsection{Our growth plans}%sub subsection 5.3.1
-Combining the current plans of two cities and ten principles of smart growth, we make the following growth plans for our cities over few decades.\\
-%%我们的计划
-\begin{table}[h]
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-\centering{Table 4:Our Plan}
-\begin{tabular}{p{5.3cm}|p{1.2cm}|p{5.2cm}|p{1.2cm}}
-\hline
-\bf Zhenjiang 10 years	& \bf change	 & \bf Columbia 10 years	& \bf change \\
-\hline
- per capita GDP(yuan/person)	& +100\%	& per captia area of roads(urban,$m^2$)	& +15\% \\
-production of tertiary industry ratio(\%)	& to 55\%	& ability of harmless treatment planet(ton)	& +100\% \\
-total export(100 million dollars)	& +100\%	& tourist income ratio in GDP(\%)	& +100\% \\
-per capita disposable income(yuan)	& +100\%	& amount of professionals(10000 person)	& +50\% \\
- per capita green spaces($m^2$)	& +20\%	& expenditure in education ratio in GDP	& to 10\% \\
- high school enrollment(10000 person)	& +100\%	& high school enrollment(10000 person)	& +50\% \\
-total social labor productivity(yuan)	& +200\%	& amount of ward beds(per ten thousand)	& +30\% \\
-amount of ward beds(per ten thousand)	& +20\%	& per capita green spaces($m^2$)	& +10\% \\
-\hline
-\end{tabular}
-\end{table}
-
-%%
-\subsubsection{Reasons for choosing these initiatives}%sub subsection 5.3.2
-Ten principles of smart growth can be reflected in the detailed of indictors. Thus, in the process of making our smart growth plans, we just need to choose appropriate indictors supported by policies on basis of geography and economic development.\\
-
-\noindent For Zhenjiang, as manufacturing industry basement in middle and lower reaches of Yangtze River in China, adept in manufacturing and export, we can stimulate its export in our plan, which can accelerate the development of city. Even though economic development is on the agenda, the environment and medical level is as important as economic development. Thus, we also give priority to relative indictors of these elements in our smart growth plan. \\
-For Columbia.SC, its economy and livelihood have higher level, thus we put its emphasis on education, technology and protection of environment. In the meanwhile, tertiary industry should be developed rapidly, which plays important role in urban development. \\
-\noindent Therefore, we make these smart growth plans above for both cities. \\
-\subsubsection{Assessment of the success of our smart growth plans}%sub subsection 5.3.3
-Based on the method in task 2, we can obtain the changes in SGI of two cities by way of matlab after implementing our growth plans.\\
-%%我们的计划中SGI总和
-\begin{table}[h]
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-\centering{Table 5:SGI of Our Plan}
-\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}}
-\hline
-City	& $SGI_0$ (2014)	& $SGI$ (2025)	& $\Delta SGI$ \\
-\hline
-Zhenjiang	& 12.5126	& 15.4329	& 2.9023 \\
-columbia	& 13.962	& 15.092	& 1.13\\
-\hline
-\end{tabular}
-\end{table}
-
-%%
-\noindent Apparently, SGI of two cities both increases after implementing our smart growth plan. Therefore, our smart growth plans are successful in the chosen cities through analysis.\\
-\subsection{Task 4}%subsection 5.4
-\subsubsection{Assessment of the importance of each initiative}%sub subsection 5.4.1
-In this task, we need to rank our chosen initiatives of our smart growth plan. Thus, we can compare the importance of each initiative to complete this task.\\
-On basis of the method mentioned in 4.2 of section 4 and SGI model, we can obtain the   following ranking of each city by way of matlab.\\
-%%计划排名
-\begin{table}[h]
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
-\centering{Table 6:Ranking of initiatives}
-\begin{tabular}{p{1cm}|p{7cm}|p{1.3cm}|p{1.4cm}|p{1.4cm}}
-\hline
-\hline
-\rowcolor[gray]{0.9}\multicolumn{5}{c}{Columbia}\\
-\hline
-\bf rank & \multicolumn{2}{|c|}{ \bf  initiatives} & \bf SGI	&  \bf $\Delta SGI$ \\
-\hline
-1	& tourist income ratio in GDP(\%)	& +100\%	& 14.3194	& 0.3574 \\
-2	& high school enrollment(10000 person)	& +50\%	& 14.2334	& 0.2714 \\
-3	& ability of harmless treatment planet(ton)	& +100\%	& 14.1711	& 0.2090 \\
-4	& amount of professionals(10000 person)	& +50\%	& 14.0586	& 0.0966 \\
-5	& expenditure in education ratio in GDP	& to 10\%	& 13.9929	& 0.0309 \\
-6	&  amount of ward beds(per ten thousand)	& +30\%	& 13.9838	& 0.0218 \\
-7	& per capita green spaces($m^2$)	& +10\%	& 13.9811	& 0.0190 \\
-8	& per captia area of roads(urban,$m^2$)	& +15\%	& 13.9726	& 0.0106 \\
-\hline
-\hline
-\rowcolor[gray]{0.9}\multicolumn{5}{c}{Zhenjiang}\\
-\hline
-\bf rank & \multicolumn{2}{|c|}{ \bf  initiatives} & \bf SGI	&  \bf $\Delta SGI$ \\
-\hline
-1	& total export(100 million dollars)	& +100\%	& 14.4935	& 1.9809 \\
-2	&  high school enrollment(10000 person)	& +100\%	& 13.0236	& 0.5109 \\
-3	& per capita disposable income(yuan)	& +100\%	& 12.6755	& 0.1628 \\
-4	& total social labor productivity(yuan)	& +200\%	& 12.6102	& 0.0975 \\
-5	&  per capita GDP(yuan/person)	& +100\%	& 12.5504	& 0.0377 \\
-6	& amount of ward beds(per ten thousand)	& +20\%	& 12.5304	& 0.0177 \\
-7	&  per capita green spaces($m^2$)	& +20\%	& 12.5288	& 0.0161 \\
-8	& production of tertiary industry ratio(\%)	& to 55\%	& 12.5128	& 0.0002 \\
-\hline
-\end{tabular}
-\end{table}
-
-%%
-\subsubsection{Analysis of the ranking}%sub subsection 5.4.2
-Evidently, the ranking proves the reasonability of our plans' emphasis.\\
-The ranking of the same initiatives of both cities is the same (education, medical level and green spaces). Thus, each of these indictors play the same role in urban development.  
-Giving thought to national conditions of both cities, Zhenjiang's emphasis is economic development while Columbia's is soft strength of society like education, as well as technology and tertiary industry. The ranking of each city's initiatives is correspond to our reasons for choosing these initiatives. \\
-\subsection{Task 5}%subsection 5.5
-In the case of that the population of city will increase 50\% by 2050, we analyze our group of indictors. We find that the increase of population has negative effects on population density, per capita green spaces and per capita living space so on.\\
-Due to population density and per capita living space not under the control of governmental policies or plans, we neglect these indictors in our smart growth plan.\\
-For Columbia.SC and Zhenjiang there are several initiatives like $per$ $capita$ $green$ $spaces$ and $amount$ $of$ $ward$ $beds(per$ $ten$ $thousand)$\\
-These implements all can effectively curb the negative impacts of the increase of population. \\
-
 %Section 6
 \section{Sensitivity analysis}
 \subsection{Selection of indictors}%subsection 6.1
-The aim of this analysis is to determine whether a single variable had an unduly large impact on the overall ranking. To test this, we randomly exclude variables/themes from the index several times. The rest of variables/themes can use the same method to aggregation smart growth index (SGI). Observe and analyze the distribution of SGI of two cities.\\
-%%盒型图
-\centerline{\includegraphics[height=8cm]{boxplot.png}}
-\centerline{Figure2:boxplot}
-As is shown in the figure of statistics, the SGI of Columbia.SC is generally higher than that of Zhenjiang. The SGI of Zhenjiang is more sensitive to that of Columbia.SC. The result proves that SGI of Zhenjiang benefits from some indictors in degrees. In other words, the development of Columbia.SC is more balanced than that of Zhenjiang.\\
 \subsection{Selection of aggregation method}%subsection 6.2
-In Task 1, we compare linear aggregation with geometric aggregation in advantages. For that reason, we finally decided to use linear aggregation to combine individual variables into the theme scores and geometric aggregation to combine theme scores into SGI.\\
-We tried to use geometric aggregation to combine individual variables into the theme scores. And we observe that the calculated SGI using different data may varies in difference.\\
-Our model is sensitive to the selection of aggregation method.\\
-
 %Section 7
 \section{Strengths and weaknesses}
 \subsection{Strengths}%subsection 7.1
-\begin{itemize}
-\item Our model establishes a detailed group of 52 indictors, which reflects the ten principles for smart growth and the three E's of sustainability. On basis of this, we can assess the success of smart growth of a city.
-\item In the construction of SGI model, we use linear aggregation to combine individual variables into the theme scores. Compensability of linear aggregation ensures fair assessment of different cities which have different emphasis in urban development. Then we use geometric aggregation to combine theme scores into SGI.Low compensability of geometric aggregation requires a city to develop evenly in all themes. 
-\item We use entropy method to determine weights of indictors or themes, which avoid subjectivity.
-\item SGI model has an all-round and objective assessment of the success of smart growth of a city.
-\end{itemize}
+
 \subsection{Weakness}%subsection 7.2
-\begin{itemize}
-\item In our model, we regard the relationship between initiative and indictor as one to one. In reality, a plan can result in the change in other indictors(not included in plan) because of correlation between indictors. The real SGI may be different with our calculated SGI.
-\item In our model, we neglect the government's executive force.
-\end{itemize}
+
 
 
 \section{References}
 \begin{thebibliography}{99}
 \bibitem{1}Bannerjee,S.Bone,J.and Finger,Y.(2016).European Digital City Index-Methodology Report.Nesta Report-ISBN Number:978-1-84875-153-8
-\bibitem{2}\url{http://www.wolframalpha.com/input/?i=columbia,+sc}
-\bibitem{3}Jing Tan,Xiaoma Tao,Xu Chen.(2012).A Synthetic Measurement of Urban "Smart Growth" Based on Improved Entropy Method.Resources and Environment in the Yangtze Basin
-\bibitem{4}Zhenjiang Statistical Yearbook,2014. Available at:\\
-\url{http://tjj.zhenjiang.gov.cn/tjzl/tjnj/}
-\bibitem{5}National Bureau of Statistics of China. Available at:\\
-\url{http://data.stats.gov.cn/}
-\bibitem{6}Data of Columbia.SC. Available at:\\
-\url{http://www.city-data.com/city/Columbia-South-Carolina.html}
-\bibitem{7}Yujuan Chen,Qifen Zha,Xiaolan Li.(2006).Application of Entropy Method in the Evaluation of Urban Sustainable Development.Journal of Jiangsu University(Social Science Edition)
 \end{thebibliography}
 
 \begin{appendices}
