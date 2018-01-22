@@ -256,7 +256,8 @@ So we use the minimum dichotomy by constantly changing the amount of inflowing w
 \caption{temperature varying with time when hot water is added}
 \label{oval}	
 \end{figure}
-\indent When hot water is added at in $V_{best}$, the temperature will only change in a very small range. It means the temperature will nearly not change.\\
+\indent When hot water is added at in $V_{best}$, the temperature will only change in a very small range from 38 to 38.09. So we got a result that the fluctuation of the temperature is always kept in a range from 0 to 0.1. \\
+\indent It means the temperature will nearly not change.\\
 %温度下降和温度稳定的比较
 \indent Next, we want to find what is the result of adding hot water as $V_{best}$ to the model. So we made a comparison between temperature varying with time when hot water is added and not added. As shown in the picture:
 \begin{figure}[H]	%图1.1
@@ -264,7 +265,20 @@ So we use the minimum dichotomy by constantly changing the amount of inflowing w
 \caption{changes in temperature over time}
 \label{oval}	
 \end{figure}
-\indent The curves tell that our hot water is set perfectly, the temperature will neither get too high nor get too low. And the goal of keeping the temperature as close as possible to the initial temperature is achieved.
+\indent The curves tell that our hot water is set perfectly, the temperature will neither get too high nor get too low. \\
+\indent When the water inflowing per unit time is $V_{best}$. We got a result that the fluctuation of the temperature is always kept in a range from $0$ to $0.1$. And the goal of keeping the temperature as close as possible to the initial temperature is achieved.
+\subsection{model optimization}
+\indent It can be obtained from the above that when we use the minimum dichotomy to find the $V_{best}$,  there always have a range from $0$ to $0.1$. It may bring some error. And we want to minimize the error of the model as we can. So we try to use the simulated annealing algorithm to optimize our model. 
+\subsubsection{simulated annealing algorithm}
+\indent Starting from a higher initial temperature, the simulated annealing algorithm randomly searches for the global optimal solution of the objective function in the solution space with the sudden drop of the temperature parameter. In other words, the local optimal solution can jump out of probability Eventually tends to the global optimum.
+\subsubsection{Optimization results}
+\indent We use python to implement simulated annealing algorithm.We call library functions of simulated annealing algorithm optimize our model. Finally, we successfully optimize our model and made the range of the $V_{best}$ get less. As shown in the picture:
+\begin{figure}[H]	%图1.3
+\centerline{\includegraphics[height=8cm]{Figure_3-1.png}}
+\caption{temperature varying with time when optimized}
+\label{oval}	
+\end{figure}
+\indent We can find that the curve of temperature with optimization approximately coincides with another curve without optimization. We got two curves with less variance. So The fluctuation of the temperature gets smaller. We successfully optimize our model.
 \subsection{Verifying the stability of the model}%验证模型的稳定性
 \indent In real life, everyone's bath time is different. We should consider that some persons want to bath for longer time. So we should prolong the abscissa with more bath time to verify the stability of the model.\\
 \indent We prolong the bath time to 150 minutes. The figure below shows the change when time prolong.
