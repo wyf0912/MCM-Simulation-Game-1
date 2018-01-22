@@ -66,12 +66,14 @@ Finally, we proved the reasonability and applicability of our model.\\
 		\hline
 		\rowcolor[gray]{0.9}\bf{Symbol}	&\bf{uint}      &\bf{Meaning}&\bf{value}	\\
 		\hline
-		${P}''_{v}$		& $hP_{a}$		 & Vapor pressure of thin saturated layer on water surface  &test\\
-		$P_{v}$		& $hP_{a}$		 & Water vapor partial pressure in wet air\\
-		$P_{a}$		& $hP_{a}$		 & Atmospheric pressure  &test\\
+		${P}''_{v}$		& $hP_{a}$		 & vapor pressure of thin saturated layer on water surface  &test\\
+		$P_{v}$		& $hP_{a}$		 & water vapor partial pressure in wet air\\
+		$P_{a}$		& $hP_{a}$		 & atmospheric pressure  &test\\
 		$L$		& $kj/kg$		 & heat of water vaporization&2500\\
 		$\varepsilon$		& 		 & emissivity&0.97\\
-		$C_{p}$		& $KJ/(kg\cdot K)$		 & Specific heat capacity of dry air at 300k &1.005\\
+		$C_{p}$		& $KJ/(kg\cdot K)$		 & specific heat capacity of dry air at 300k &1.005\\
+		$C_{water}$		& $KJ/(kg\cdot K)$		 & specific heat capacity of water at 300k &4.196\\
+
 		\hline
 		\end{tabular}
 	\end{table}
@@ -84,19 +86,21 @@ Finally, we proved the reasonability and applicability of our model.\\
         \hline
         \rowcolor[gray]{0.9}\bf{Symbol}	&\bf{uint}      &\bf{Meaning}\\
         \hline
-        $V(h)$			& $m^3  $		 & The relationship between volume of water and liquid height \\
-        $S_{1}(h)$		& $m^2  $		 & The top surface area of the liquid 	\\
-        $S_{2}(h)$		& $m^2  $		 & The lower surface area of the bathtub 	\\
-        $S_{3}(h)$		& $m^2  $		 & The side contact area of the bathtub and liquid 	\\
-        \emph{S}	& $m^2  $		 & The surface area of the body\\
+        $V(h)$			& $m^3  $		 & the relationship between volume of water and liquid height \\
+        $S_{1}(h)$		& $m^2  $		 & the top surface area of the liquid 	\\
+        $S_{2}(h)$		& $m^2  $		 & the lower surface area of the bathtub 	\\
+        $S_{3}(h)$		& $m^2  $		 & the side contact area of the bathtub and liquid 	\\
+        \emph{S}	& $m^2  $		 & the surface area of the body\\
         ${h_{p}}$	& $cm	$        & height of a person \\
         \emph{w}	& $kg	$        & weight of a person \\
-        $\alpha$		& $ W/(m^{2}\cdot^{\circ}C)  $		 & Heat dissipation coefficient\\
-        $t$		& $ ^{\circ}C  $		 & Surface temperature of water \\
-        $\theta$		& $^{\circ}C$		 & Dry bulb temperature of air\\
-        $\beta$		& $W/(m^{2}\cdot hP_{a})$		 & Evaporation coefficient\\
-        $Q_{upper}$		& $J$		 & Bathtub top surface unit time heat dissipation\\
-		$Q_{side}$		& $J$		 & Bathtub side surface unit time heat dissipation\\
+        $\alpha$		& $ W/(m^{2}\cdot^{\circ}C)  $		 & heat dissipation coefficient\\
+        $t$		& $ ^{\circ}C  $		 & surface temperature of water \\
+        $\theta$		& $^{\circ}C$		 & dry bulb temperature of air\\
+        $\beta$		& $W/(m^{2}\cdot hP_{a})$		 & evaporation coefficient\\
+        $Q_{upper}$		& $J$		 & bathtub top surface unit time heat dissipation\\
+		$Q_{side}$		& $J$		 & bathtub side surface unit time heat dissipation\\
+		$t_{in}$		& ${^\circ}C$		 & the temperature of the water poured in\\
+		$Q_{in}$		& $J$		 & the energy brought into the bathtub in period of time \\
 		        \hline
         \end{tabular}
         \end{table}
@@ -115,7 +119,7 @@ S_{1}=S_{1}(v) \\
 S_{2}=S_{2}(v)  \\
 \end{split}
 \end{equation}
-\indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface.So we So we decompose the model into two parts:\\
+\indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. So we So we decompose the model into two parts:\\
 \indent \indent1) Liquid surface heat loss model\\
 \indent \indent2) contact area of liquid and bathtub heat loss model
 \subsection{Liquid surface heat loss model}
@@ -162,17 +166,40 @@ Q_{side}&=\int_{side}dQ\\
 &=[\alpha (t-\theta)+0.94\varepsilon \sigma (t+273)^{4}]S_{3}\\
 \end{split}
 \end{equation}
+\subsection{the bathtub heat loss model} 	%4.2
 
->>>>>>> 4f0a967b8278756663873edd796ef36282afef9b
+\indent Just as I mentioned above, the water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. \\
+
+\indent So the total heat dissipating capacity during unit time is:
+\begin{equation}
+	Q_{0}=Q_{upper}+Q_{side}
+\end{equation}
+
+
+\indent The specific forms of $Q_{upper}$ and $Q_{side}$ can be obtained from the above. 
 
 \section{Model of hot water addition}
+\indent First, we should establish an abstract model to describe the heating process.\\
+\indent The bathtub is heated by the tap infusion. So we should consider the energy and the volume of water in unit time. \\\indent Set the unit time flow of the faucet as $ V $, and the temperature of the water poured in is $ t_{in} {^\circ}C$. At the same time, the specific heat capacity of water of water changes in a very small degree with the fluctuations in temperature.So we approximate the value as the temperature is 300k. \\
+\indent Compared to the energy reference, during unit time the energy of water poured in is:
+\begin{equation}
+	q_{in}=C_{water}\rho V(t_{in}-36) 
+\end{equation}
+\indent Adding hot water is a continuous process. Then in the constant $ T_{1} $ seconds of adding hot water, the total energy brought into the bathtub is:
+\begin{equation}
+	Q_{in}=q_{in}T_{1}=C_{water}\rho V(t_{in}-36)T_{1}
+\end{equation}
+\indent Meanwhile, the volume of water brought into the bathtub is:
+\begin{equation}
+	\bigtriangleup_{volume}=VT_{1} 
+\end{equation}
 \subsection{Changes in the volume of water in a bathtub}
 
 \subsubsection{People take the initiative to drain through the drain of the bathtub}
 
 \subsubsection{Water overflow through the upper drain}
 \section{Solutions for tasks}
-%Section 5
+%Section 7
 \section{Factors that affect the model}
 \subsection{Different shapes of the bathtub}
 We model and analysis several different shapes of bathtubs.
