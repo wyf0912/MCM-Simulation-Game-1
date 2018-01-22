@@ -238,12 +238,22 @@ The PID algorithm is a classic automatic control algorithm. Suppose we can get r
 T_{error}=T_{target}-T_{real}
 \end{equation}
 \indent But considering the accuracy of temperature measurement\\
+\begin{equation}
+	T_{error}=\begin{cases}
+	&T_{target}-T_{real} \quad\text{ if }\left | T_{target}-T_{real} \right |\geq 0.01 \\ 
+	&0\indent\indent\indent\indent \text{ if } \left | T_{target}-T_{real} \right |<0.01 
+	\end{cases}
+\end{equation}
 \indent P is a proportion term
 \begin{equation}
 	P=Kp\times T_{error}
 \end{equation}
-
-
+\indent I is an integral term
+\begin{equation}
+	I=Ki\times \sum T_{error}
+\end{equation}
+and the function of I is to Eliminate static error.\\
+\indent D is a differential term.
 \begin{figure}[H]
 \centering
 \subfigure[When Kp is too small]{
