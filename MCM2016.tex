@@ -18,6 +18,8 @@
 \usepackage{float}
 \usepackage{indentfirst}
 \usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subfigure}
 \title{}
 \date{}
 
@@ -210,6 +212,7 @@ Q_{side}&=\int_{side}dQ\\
 \indent The specific forms of $Q_{upper}$ and $Q_{side}$ can be obtained from the above. 
 
 \section{Model of hot water addition}
+\subsection{Influence of inflowing water on quantity of heat and volume}
 \indent First, we should establish an abstract model to describe the heating process.\\
 \indent The water in the bathtub is heated by the hot water flowing into it. So we should consider the energy and the volume of water in unit time. \\
 \indent Set the unit time flow of the faucet as $ V $, and the temperature of the inflow water is $ t_{in}$. Because the  heat capacity of water changes in a very small degree, we can use $0^{\circ}$ as the reference point which means the relative quantity of heat is 0.\\
@@ -226,6 +229,50 @@ Q_{side}&=\int_{side}dQ\\
 	\bigtriangleup V=VT_{1} 
 \end{equation}
 
+\subsection{Add a constant flow of hot water}
+In order to facilitate user operation, we give up the discrete model using complicated intermittent inflow water.
+\subsection{Use automatic control algorithm to control flow velocity}
+The PID algorithm is a classic automatic control algorithm. Suppose we can get relatively accurate temperatures, accurately to 0.01$^{\circ}C$. And suppose the maximum flow rate of hot water is 100ml/s.\\
+\indent We can establish an automatic control equation, which includes three items of P, I and D.\\
+\begin{equation}
+T_{error}=T_{target}-T_{real}
+\end{equation}
+\indent But considering the accuracy of temperature measurement\\
+\indent P is a proportion term
+\begin{equation}
+	P=Kp\times T_{error}
+\end{equation}
+
+
+\begin{figure}[H]
+\centering
+\subfigure[When Kp is too small]{
+\begin{minipage}{7cm}
+\centering \includegraphics[scale=0.26]{PID_1.png}       
+\end{minipage}
+}
+\subfigure[When Kp is too large]{
+\begin{minipage}{7cm}
+\centering                                    \includegraphics[scale=0.26]{PID_4.png}        
+\end{minipage}
+}
+\caption{Only use Kp}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfigure[When Kp is too small]{
+\begin{minipage}{7cm}
+\centering \includegraphics[scale=0.26]{PID_2.png}       
+\end{minipage}
+}
+\subfigure[When Kp is too large]{
+\begin{minipage}{7cm}
+\centering                                    \includegraphics[scale=0.26]{PID_3.png}        
+\end{minipage}
+}
+\caption{Use Kp, Ki, Kd}
+\end{figure}
 
 \section{Solutions for tasks}
 \subsection{Model Implementation with Computer}
