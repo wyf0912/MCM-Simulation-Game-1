@@ -431,6 +431,23 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 	\label{action}	
 \end{figure}
 \indent By analyzing the Figure \ref{action}, we can find that the action and no action curve basically coincide. Therefore, the action has little effect on the trend of temperature change.
+\begin{table}[H]
+	\setlength{\abovecaptionskip}{0pt}
+	\setlength{\belowcaptionskip}{0pt}
+	\centering{Table 3:The simulation result}\\
+	\begin{tabular}{p{2cm}|p{2cm}|p{1.5cm}|p{3cm}|p{1cm}|p{2cm}}
+		\hline
+		\rowcolor[gray]{0.9}\bf{water flow}	&\bf{Water consumption} &\bf{bubble}&\bf{body shape}&\bf{action}&\bf{temperature variance} \\
+		\hline
+		PID 	 & 68.838L &No  &No &No &0.007026\\
+		40ml/s   & 72.000L &No  &No &No &15.66907\\
+		PID 	 & 64.006L &Yes &No &No &0.007026\\
+		40ml/s   & 72.000L &Yes &No &No &86.95530\\
+		37.3ml/s & 64.140L &Yes &No &No &15.61321\\
+		
+		\hline
+	\end{tabular}
+\end{table}
 \section{Sensitivity analysis}
 \subsection{Selection of indictors}%subsection 6.1
 \subsection{Selection of aggregation method}%subsection 6.2

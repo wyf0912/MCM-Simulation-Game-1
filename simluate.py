@@ -3,24 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 from scipy import optimize
-
-def circle_h(v):
-    r = 0.75
-    h = v/(math.pi*r*r)
-    return h
-
-
-def circle_s1(v):
-    return math.pi* 2.25/4
-
-
-def circle_s2(v):
-    return math.pi * 0.25
-
-
-def circle_s3(h):
-    return 2*math.pi*0.75*h
-
+from shape import *
 
 class Bathtub:
     def __init__(self,v_water,T,target_T,function_h,function_s1,function_s2,function_s3,v_person=0,h_person=0,action=False,line=False):
@@ -161,11 +144,11 @@ minimum=''
 print(minimum)
 print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
 print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
-print(circle4.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
-print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
+#print(circle4.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
+#print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
 
-#print(circle1_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
-#print(circle2_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
+print(circle1_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
+print(circle2_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
 #print(circle4_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(80kg 1.70m)",bubble=1))
 #print(circle3_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
 
