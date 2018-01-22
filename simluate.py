@@ -23,7 +23,7 @@ def circle_s3(h):
 
 
 class Bathtub:
-    def __init__(self,v_water,T,target_T,function_h,function_s1,function_s2,function_s3,v_person=0,h_person=0):
+    def __init__(self,v_water,T,target_T,function_h,function_s1,function_s2,function_s3,v_person=0,h_person=0,action=False,line=False):
         self.v_water = v_water
         self.h_person = h_person
         self.v_person = v_person
@@ -35,6 +35,8 @@ class Bathtub:
         self.function_s3 = function_s3
         self.Q = self.v_water*1000*4200*T
         self.s_person = 0.0057*self.h_person +0.0121*self.v_person*1000 + 0.0820
+        self.action = action
+        self.line =line
 
         self.theta = 18 #室内温度
         self.beta  = pow(22+2*(self.T-self.theta),0.5)
@@ -112,8 +114,9 @@ class Bathtub:
     def random_action(self):
         if random.random()>0.98:
             loss_water_v = self.v_person * 0.001
-            self.v_water -= loss_water_v
-            self.Q -= self.T * 1000 * 4200 * loss_water_v
+            if self.action:
+                self.v_water -= loss_water_v
+                self.Q -= self.T * 1000 * 4200 * loss_water_v
 
     def simluate(self, dv,pid=False,label_str='',time=1800, bubble=0):
         t = [0] * time
@@ -130,7 +133,10 @@ class Bathtub:
             circle2.random_action()
             self.input(dv, 50)
             self.check()
-        plt.plot(x_label,t,label=label_str)
+        if self.line:
+            plt.plot(x_label,t,'--',label=label_str)
+        else:
+            plt.plot(x_label, t, label=label_str)
         plt.legend()
         return self.total_v,self.int_error
 
@@ -139,6 +145,10 @@ circle2 = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person
 circle4 = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.080,h_person=1.7)
 circle3 = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3)
 
+circle1_ = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.075,h_person=1.85,action=1,line='--')
+circle2_ = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.070,h_person=1.7,action=1,line='--')
+circle4_ = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.080,h_person=1.7,action=1,line='--')
+circle3_ = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3)
 
 plt.figure(figsize=(10.6,6))
 plt.title('Changes in temperature over time')
@@ -151,9 +161,17 @@ minimum=''
 print(minimum)
 print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
 print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
-print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
+print(circle4.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
 print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
+
+#print(circle1_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
+#print(circle2_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
+#print(circle4_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(80kg 1.70m)",bubble=1))
+#print(circle3_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
+
+
 #print(circle3.simluate(0,label_str="No hot water inflows",bubble=1))
+
 plt.show()
 
 

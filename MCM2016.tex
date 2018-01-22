@@ -208,7 +208,8 @@ Q_{side}&=\int_{side}dQ\\
 \subsection{Model Implementation with Computer}
 \indent In the above, We've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
 \indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
-\indent The figure below shows the process of simulation: \begin{figure}[H]
+\indent The figure below shows the process of simulation:
+ \begin{figure}[H]
 \centerline{\includegraphics[height=7cm]{process.png}}
 \caption{the process of simulation}                  %流程图
 \label{oval}	
@@ -250,13 +251,17 @@ So we use the minimum dichotomy by constantly changing the amount of inflowing w
 \label{oval}	
 \end{figure}
 \indent The curves tell that our hot water is set perfectly, the temperature will neither get too high nor get too low. And the goal of keeping the temperature as close as possible to the initial temperature is achieved.
-\subsection{Verifying the stability of the model}%验证模型的稳定性\indent In real life, everyone's bath time is different. We should consider that some persons want to bath for longer time. So we should prolong the abscissa with more bath time to verify the stability of the model.\\
-\indent We prolong the bath time to 150 minutes. The figure below shows the change when time prolong.\begin{figure}[H]	%图1.3
+\subsection{Verifying the stability of the model}%验证模型的稳定性
+\indent In real life, everyone's bath time is different. We should consider that some persons want to bath for longer time. So we should prolong the abscissa with more bath time to verify the stability of the model.\\
+\indent We prolong the bath time to 150 minutes. The figure below shows the change when time prolong.
+\begin{figure}[H]	%图1.3
 \centerline{\includegraphics[height=8cm]{Figure_1-1.png}}
 \caption{temperature varying with time when hot water is added}
 \label{oval}	
 \end{figure}
-\indent Therefore, when hot water is not added, the temperature will decrease with time constantly, even the temperature will be lower than the room temperature set previously.But when hot water is added, the temperature can also be kept well. So our model is stable and effective.
+\indent Therefore, when hot water is not added, the temperature will decrease with time constantly, even the temperature will be lower than the room temperature set previously.
+But when hot water is added, the temperature can also be kept well. So our model is stable and effective.
+
 %Section 7
 \section{Factors that affect the model}
 \subsection{Different shapes of the bathtub}
@@ -343,7 +348,7 @@ And we can get the area of side surface $S_{3}$ of the bathtub.
 \\\\
 \noindent\
 \textbf{Simulation Result}\\\\
-We compare two ways of adding hot water. And when  
+\indent We compare two ways of adding hot water. And when  
 \begin{figure}[H]
 	\centerline{\includegraphics[height=10cm]{Figure_4-2.png}}
 	\caption{Comparison of two kinds of water adding methods}
@@ -382,18 +387,29 @@ S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w
 	\label{Q_skin}
 \end{equation}
 where \emph{h}=1.48,${T_{f}}=37.5^{\circ}$. \\
+\indent We add this part of heat loss to our heat dissipation model. The change of temperature with time is obtained by the simulation program. And the result is drawn into a graph as follows
+\begin{figure}[H]
+	\centerline{\includegraphics[height=10cm]{Figure_4-5.png}}
+	\caption{The change of temperature influenced by human body over time}
+	\label{s_person}	
+\end{figure}
 \subsubsection{The influence of the body shape and action}
 The volume of the person in the water affects the height of the liquid. In order to discuss the influence on the liquid surface conveniently. We use the weight to estimate the volume of the body. We use $\rho =1.06\times10^{3}kg/m^{3}$ as the density of the human body, so the volume can be calculated:
 \begin{equation}
-v=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
+v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \end{equation}
 \indent If we consider the effect of the body volume, we need to correct of the height of the liquid surface. We assume 65\% volume of the body is in the water. So the height of the liquid surface should be corrected to\\
 \begin{equation}
 	h=H(v_{water}+0.65v_{body})
 \end{equation}
-
+\indent Because the effect of body action on convection and radiation heat dissipation is very small, we simplify the effect of body action on our model.\\
+\indent We assume that the movements of persons can only lead to a water spill that is equivalent to a certain proportion of the body's volume. We set the volume of liquid for each overflow is $dv$
+\begin{equation}
+	dv=5\times10^{-3}v_{body}
+\end{equation}
+\indent We set the probability of water overflow per second is 0.02, which means there is an overflow of water on average in half a minute.\\
 \subsubsection{Result}
-
+\
 %Section 6
 \section{Sensitivity analysis}
 \subsection{Selection of indictors}%subsection 6.1
