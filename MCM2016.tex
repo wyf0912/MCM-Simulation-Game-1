@@ -26,13 +26,24 @@
 \begin{abstract}%摘要
 
 
-\indent  In recent years, with he rapid development in economy and explosive growth in population, environment pollution and depletion of resources have been aggravated day by day. Smart Growth was then put forward. Lots of cities have drawn up the development plans on basis of the combination of ten principles for Smart Growth and their own conditions. Our work is to evaluate the success of each city in Smart Growth and provide a guidance for plan making.Meanwhile, we need to measure the success of our smart growth plan. Therefore, we define the "Smart Growth Index" (SGI) to measure the success of smart growth and development plans of a city. \\
-\indent  Our model establishes a Detail group of 52 indictors, which reflects the ten principles for smart growth and the three E's of sustainability. On basis of this, we can assess the success of smart growth of a city. In the construction of SGI model, we use linear aggregation to combine individual variables into the theme scores. Compensability of linear aggregation ensures fair assessment of different cities which have different emphasis in urban development. Then we use geometric aggregation to combine theme scores into SGI. Low compensability of geometric aggregation requires a city to develop evenly in all themes. We use entropy method to determine weights of indictors or themes, which avoid subjectivity. SGI model has an all-round and objective assessment of the success of smart growth of a city.\\
-\indent  With the completion of these, we respectively select a city in China and America (Zhenjiang and Columbia.SC). We assess the success of city development and their smart growth on basis of SGI model. 
-Finally, we proved the reasonability and applicability of our model.\\
+\title{Keep the Bathtub Warm}
+\indent In this paper, we focus on the need for keeping the initial temperature of the water in the bathtub without a secondary heating system and circulating jets as much as possible. We build a model of the temperature of the bathtub water in space and time , analysis the impact of the bathtub's volume, shape and factors of people, then make a non-technical statement.\\
+\indent
+Our model is mainly based on the loss and inflow of heat and variety of the amount of water.\\
+\indent
+First, using the heat conduction formula, the heat convection formula and the formula of water surface evaporation, we build a basic heat dissipation model, including the dissipation of the surface of water and interface between water and bathtub. Due to the input of heat depends on the input of water, we build two models based on different ways of water adding. The first type is to add water by manual adjustment, while the second type is to adjust the water automatically by PID. For the variety of the amount of water, we limit the ceiling of water and build a basic drainage model.\\
+\indent
+The model is simulated and verified by the statistics and results. As for the first type-add hot water, we determine an appropriate water flow rate per unit time, to make temperature fluctuations remain within the range ($0.1^{\circ}C$ ). We simulate the degradation to figure out the approximate optimal solution, which results in a more stable temperature and less waste. As for the second type, we adjust the PID index and build a more stable model, in which the temperature remains unchanged almost, the amount of water reduce by 8-13\% compared with manual adjustment. Considering the random water flow spillover, we simulate two models and validate the stability.\\
+\indent
+The model is improved in consideration of the size of human body, movement and body temperature. The relation between body size and surface area and height and weight was obtained by using data and empirical formula. Because the internal temperature of human is kept constant, we add the heat absorption model to the heat dissipation model using Newton's law of cooling. In the model of the water change, we add the impact of body volume on the level of the water, and the amount of water overflow that may occur due to the movement of people.\\
+\indent
+Bubble is considered to influence mainly heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model. Because the air in the bubble will be saturated in a short time, we ignore the evaporation in the heat loss model.\\
+\indent
+We simulate under different conditions, give the results. And the effects of different factors are compared and analyzed. Finally, we give the strengths and weaknesses of our models. \\
+
+
 \begin{keywords}
- {\bf{Geometric and linear aggregation ;  entropy method} }\par
-\indent\indent\indent\indent\indent {\bf Smart Growth Index ;  PCA}
+ \textbf{Heat dissipation model,\indent Continuous water addition model, Continues system simulation,\indent Simulate Anneal Arithmetic(SAA),\indent PID}
 \end{keywords}
 \end{abstract}
 
@@ -200,24 +211,22 @@ Q_{side}&=\int_{side}dQ\\
 
 \section{Model of hot water addition}
 \indent First, we should establish an abstract model to describe the heating process.\\
-\indent The bathtub is heated by the tap infusion. So we should consider the energy and the volume of water in unit time. \\\indent Set the unit time flow of the faucet as $ V $, and the temperature of the water poured in is $ t_{in} {^\circ}C$. At the same time, the specific heat capacity of water of water changes in a very small degree with the fluctuations in temperature.So we approximate the value as the temperature is 300k. \\
+\indent The water in the bathtub is heated by the hot water flowing into it. So we should consider the energy and the volume of water in unit time. \\
+\indent Set the unit time flow of the faucet as $ V $, and the temperature of the inflow water is $ t_{in}$. Because the  heat capacity of water changes in a very small degree, we can use $0^{\circ}$ as the reference point which means the relative quantity of heat is 0.\\
 \indent Compared to the energy reference, during unit time the energy of water poured in is:
 \begin{equation}
-	q_{in}=C_{water}\rho V(t_{in}-36) 
+	q_{in}=C\rho Vt_{in} 
 \end{equation}
 \indent Adding hot water is a continuous process. Then in the constant $ T_{1} $ seconds of adding hot water, the total energy brought into the bathtub is:
 \begin{equation}
-	Q_{in}=q_{in}T_{1}=C_{water}\rho V(t_{in}-36)T_{1}
+	Q_{in}=q_{in}T_{1}=C\rho Vt_{in}T_{1}
 \end{equation}
 \indent Meanwhile, the volume of water brought into the bathtub is:
 \begin{equation}
-	\bigtriangleup_{volume}=VT_{1} 
+	\bigtriangleup V=VT_{1} 
 \end{equation}
-\subsection{Changes in the volume of water in a bathtub}
 
-\subsubsection{People take the initiative to drain through the drain of the bathtub}
 
-\subsubsection{Water overflow through the upper drain}
 \section{Solutions for tasks}
 \subsection{Model Implementation with Computer}
 \indent In the above, We've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
@@ -256,7 +265,7 @@ So we use the minimum dichotomy by constantly changing the amount of inflowing w
 \caption{temperature varying with time when hot water is added}
 \label{oval}	
 \end{figure}
-\indent When hot water is added at in $V_{best}$, the temperature will only change in a very small range from 38 to 38.09. So we got a result that the fluctuation of the temperature is always kept in a range from 0 to 0.1. \\
+\indent When hot water is added at in $V_{best}$, the temperature will only change in a very small range from 38 to 38.09. So we get a result that the fluctuation of the temperature is always kept in a range from 0 to 0.1. \\
 \indent It means the temperature will nearly not change.\\
 %温度下降和温度稳定的比较
 \indent Next, we want to find what is the result of adding hot water as $V_{best}$ to the model. So we made a comparison between temperature varying with time when hot water is added and not added. As shown in the picture:
@@ -474,7 +483,17 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \section{Sensitivity analysis}
 \subsection{Selection of indictors}%subsection 6.1
 \subsection{Selection of aggregation method}%subsection 6.2
-\section{Strengths and Weaknesses}\subsection{Strengths}\begin{itemize}\item{\textbf{The simulation result of our model is appealing.} As we have shown before, almost all the simulation of our model is according with the real world situation. And this means our model is effective to describe the process of bath.}\item{\textbf{Our model is steady.} When the different influential factors are considered, our model is still effective. Our model is steady to describe the process in a varied situation. }\item{\textbf{Our model is easy to implement.} We give the specific amount of inflowing water. When the real environmental parameters are given, the users can easily adjust the amount of inflowing water to keep the initial temperature. }\end{itemize}\subsection{Weaknesses}\begin{itemize}\item{\textbf{The motions of people is simplified.}The motions of people are too complicated and variable to consider. Some complicated motions may bring more influence on our model. }\end{itemize}
+\section{Strengths and Weaknesses}
+\subsection{Strengths}
+\begin{itemize}
+\item{\textbf{The simulation result of our model is appealing.} As we have shown before, almost all the simulation of our model is according with the real world situation. And this means our model is effective to describe the process of bath.}
+\item{\textbf{Our model is steady.} When the different influential factors are considered, our model is still effective. Our model is steady to describe the process in a varied situation. }
+\item{\textbf{Our model is easy to implement.} We give the specific amount of inflowing water. When the real environmental parameters are given, the users can easily adjust the amount of inflowing water to keep the initial temperature. }
+\end{itemize}
+\subsection{Weaknesses}
+\begin{itemize}
+\item{\textbf{The motions of people is simplified.}The motions of people are too complicated and variable to consider. Some complicated motions may bring more influence on our model. }
+\end{itemize}
 
 
 \section{References}
