@@ -45,9 +45,9 @@ Finally, we proved the reasonability and applicability of our model.\\
 %Section 1
 \section{Introduction}
 \subsection{Background}%subsection 1.1
-
+\indent the traditional bathtub is a simple waterproof container.the bathtub temperature is decreasing and people need to constantly add hot water to maintain the temperature.\\\indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.
 \subsection{Our work}
-
+\indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.\\\indent To solve this problem, we need to consider the impact of the bathtub shape and size on this model. Person's shape,size and temperature are also under consideration.
 
 %Section 2
 \section{Assumptions}
@@ -56,6 +56,8 @@ Finally, we proved the reasonability and applicability of our model.\\
 {\bf (2) } \textbf{Consider the energy of water in 36 ${^\circ}C$ as the energy reference.} For we can arbitrarily set our energy reference to be zero.\\
 {\bf (3) } \textbf{加入水的温度是固定的} \\
 {\bf (4) } \textbf{流出的水的温度就是浴缸的初始温度} \\
+{\bf (5) } \textbf{沐浴过程中室温不变} \\
+
 
 \section{Symbol Description}
 \begin{table}[H]
@@ -199,6 +201,13 @@ Q_{side}&=\int_{side}dQ\\
 
 \subsubsection{Water overflow through the upper drain}
 \section{Solutions for tasks}
+\subsection{Model Implementation with Computer}
+\indent In the above, We've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
+\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.
+\subsection{model testing}			%6.2 model test
+\indent First, we need to verify the accuracy of the heat dissipation model.
+We want to verify whether the model of the temperature change over time is in accordance with the actual situation.\\
+\indent We set the bath time as half an hour. And we don't add hot water or bubble bath additive in the bathtub.
 %Section 7
 \section{Factors that affect the model}
 \subsection{Different shapes of the bathtub}
