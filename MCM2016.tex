@@ -370,6 +370,40 @@ But when hot water is added, the temperature can also be kept well. So our model
 
 %Section 7
 \section{Factors that affect the model}
+\subsection{The influence of the bubble}
+\indent In our model, when bubble exists in the surface of water, the heat dissipation will change.\\
+\indent In the discussion above, we know that heat dissipation consists mainly of thermal evaporation, thermal radiation, and thermal convection. Thermal evaporation occurs mainly in the air when the humidity is not yet saturated. When bubble exists, the little air between the surface of water and bubble will soon reach saturation. So there will be no thermal evaporation.\\
+\indent Thermal radiation is an radiation of an electromagnetic wave. When the wave passes through a different medium( bubble and air), it will reflect back to the water. The amount of reflection is measured by reflection coefficient $R$.\\
+\indent And the index of refraction of air is :
+\begin{equation}
+n_{1}\approx 1.0
+\end{equation}
+\indent the index of refraction of bubble is: 
+\begin{equation}
+n_{0}\approx 1.33
+\end{equation}
+\indent So the reflection coefficient is: 
+\begin{equation}
+R=\frac{(n_{0}-n_{1})^{2}}{(n_{0}+n_{1})^{2}}=\frac{(1.0-1.33)^{2}}{(1.0+1.33)^2}=0.02
+\end{equation}
+\indent Then in the equation (\ref{bubble}), the $dQ_{c}$ will be multiplied by ($1-R=0.98$). \\
+\indent In heat Dissipation Model the equation (\ref{bubble}) will change into :
+\begin{equation}
+\begin{split}
+Q_{upper}&=\int_{upper}dQ\\
+&=\int_{upper} [\alpha (t-\theta)+0.98\varepsilon \sigma (t+273)^{4}]dS\\
+&=[\alpha (t-\theta)+0.98\varepsilon \sigma (t+273)^{4}]S_{3} 
+\end{split}
+\end{equation} 
+\indent After the equation(\ref{bubble}) has been changed, we simulate the process of bath again.\\
+\indent The figure below shows the image of temperature varying with time when bubble is added(with proper amount of hot water added).
+\begin{figure}[H]
+	\centerline{\includegraphics[height=9cm]{Figure_1-5.png}}
+	\caption{temperature varying with time when bubble is added}
+	\label{bubble}
+\end{figure}
+Through the analysis of Figure \ref{bubble}, we can find that bubbles can increase a small amount of thermal insulation.
+
 \subsection{Different shapes of the bathtub}
 We model and analysis several different shapes of bathtubs.
 \subsubsection{Bathtub based on ovals}
@@ -427,11 +461,15 @@ L(z)=\pi (\frac{3}{2}(a(z)+b(z))-\sqrt{a(z)b(z)})
 \end{equation}\\\\
 \noindent\
 \textbf{Simulation Result}\\\\
+\indent We simulate the optimization of water inflow using the annealing algorithm  and water inflow adjusted by PID. The result is as follows
 \begin{figure}[H]
 	\centerline{\includegraphics[height=8cm]{oval2.png}}
 	\caption{The shape of bathtub based on circles}
 	\label{circle}	
 \end{figure}
+\indent We can find that the optimal manual adjustment is a little better than the PID control. The reason is that the PID automatic regulation depends on the temperature measurement accuracy. But the temperature stability of  two methods is also very good.
+
+
 \subsubsection{Bathtub based on circles}
 \begin{figure}[H]
 \centerline{\includegraphics[height=8cm]{circle.png}}
@@ -564,33 +602,7 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 		\hline
 	\end{tabular}
 \end{table}
-\subsection{The influence of the bubble}
-\indent In our model, when bubble exists in the surface of water, the heat dissipation will change.\\
-\indent In the discussion above, we know that heat dissipation consists mainly of thermal evaporation, thermal radiation, and thermal convection. Thermal evaporation occurs mainly in the air when the humidity is not yet saturated. When bubble exists, the little air between the surface of water and bubble will soon reach saturation. So there will be no thermal evaporation.\\
-\indent Thermal radiation is an radiation of an electromagnetic wave. When the wave passes through a different medium( bubble and air), it will reflect back to the water. The amount of reflection is measured by reflection coefficient $R$.\\
-\indent And the index of refraction of air is :
-\begin{equation}
-	n_{1}\approx 1.0
-\end{equation}
-\indent the index of refraction of bubble is: 
-\begin{equation}
-	 n_{0}\approx 1.33
-\end{equation}\indent So the reflection coefficient is: 
-\begin{equation}
-	R=\frac{(n_{0}-n_{1})^{2}}{(n_{0}+n_{1})^{2}}=\frac{(1.0-1.33)^{2}}{(1.0+1.33)^2}=0.02
-\end{equation}\indent Then in the equation (\ref{bubble}), the $dQ_{c}$ will be multiplied by ($1-R=0.98$). \\
-\indent In heat Dissipation Model the equation (\ref{bubble}) will change into :
-\begin{equation}
-\begin{split}
-	Q_{upper}&=\int_{upper}dQ\\
-	&=\int_{upper} [\alpha (t-\theta)+0.98\varepsilon \sigma (t+273)^{4}]dS\\
-	&=[\alpha (t-\theta)+0.98\varepsilon \sigma (t+273)^{4}]S_{3} 
-	\end{split}
-\end{equation} \indent After the equation(\ref{bubble}) has been changed, we simulate the process of bath again.\\\indent The figure below shows the image of temperature varying with time when bubble is added(with proper amount of hot water added).
-\begin{figure}[H]
-		\centerline{\includegraphics[height=9cm]{Figure_1-5.png}}
-	\caption{temperature varying with time when bubble is added}
-\end{figure}
+
 \section{Sensitivity analysis}
 \subsection{Selection of indictors}%subsection 6.1
 \subsection{Selection of aggregation method}%subsection 6.2
