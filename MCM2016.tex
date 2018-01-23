@@ -62,15 +62,19 @@ the bathtub temperature is decreasing and people need to constantly add hot wate
 \indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.\\
 \indent To solve this problem, we need to consider the impact of the bathtub shape and size on this model. Person's shape, size and temperature are also under consideration.\\
 \indent First, if we want to establish the water temperature model of the bathtub, we need to consider two aspects of heat about dissipation and heating.\\
-\indent For the heat dissipation model of the bathtub, we should determine which part of the bathtub heat dissipation and the dissipation mode of these parts. For the heating model of the bathtub, we need to consider whether the heating mode is manually heated or automatically heated. We have taken into account the upper limit of the tub volume. So we should constraint the upper limit of the water volume and establish a drainage model.\\\indent After establishing the model, we have to consider how to solve the model. And we want to use the simulation software to solve the model by finding the appropriate value to make the temperature constant. Then we will think about how to optimize the model and make the error of the value smaller. \\
+\indent For the heat dissipation model of the bathtub, we should determine which part of the bathtub heat dissipation and the dissipation mode of these parts. For the heating model of the bathtub, we need to consider whether the heating mode is manually heated or automatically heated. We have taken into account the upper limit of the tub volume. So we should constraint the upper limit of the water volume and establish a drainage model.\\
+\indent After establishing the model, we have to consider how to solve the model. And we want to use the simulation software to solve the model by finding the appropriate value to make the temperature constant. Then we will think about how to optimize the model and make the error of the value smaller. \\
 \indent At the same time we also need to consider the effect of the shape and volume of the bathtub on the model. We want to abstract the geometric properties of the bathtub as a function expression. We will try to minimize the impact of geometric properties of the bathtub on the model. We also want to design specific bathtub shapes to analysis.\\
-\indent Considering the effect of the human body on the model of the bathtub, we mainly determine how the temperature and volume of people effect the water temperature model. We will also explore how the behavior of people changes which attributes of the bathtub model.Consider the impact of bubble. We will mainly through the thermodynamic equations to explore how the bubble will change the thermodynamic parameters.
+\indent Considering the effect of the human body on the model of the bathtub, we mainly determine how the temperature and volume of people effect the water temperature model. We will also explore how the behavior of people changes which attributes of the bathtub model.
+Consider the impact of bubble. We will mainly through the thermodynamic equations to explore how the bubble will change the thermodynamic parameters.
 %Section 2
 \section{Assumptions}
 \noindent
 {\bf (1) } \textbf{Evaporation will result in no loss of water.} The loss of water from evaporation is too little to consider, so we ignore the change of quantity of water.\\
 {\bf (2) } \textbf{Consider the energy of water in 36 ${^\circ}C$ as the energy reference.} For we can arbitrarily set our energy reference to be zero.\\
-{\bf (3) } \textbf{The temperature of inflowing can be set precisely.}The temperature of inflowing water set initially can be kept precisely by faucet, and will not change.\\{\bf(4) } \textbf{The temperature of overflowing water equals to the initial temperature of bathtub.}Because the process of water overflowing is very rapid, the temperature of the overflowing water changes little.\\{\bf(5) } \textbf{The temperature of the room does not change.}The hot steam have little influence on the temperature of the room, so the temperature of the room almost remain unchanged.
+{\bf (3) } \textbf{The temperature of inflowing can be set precisely.}The temperature of inflowing water set initially can be kept precisely by faucet, and will not change.\\
+{\bf(4) } \textbf{The temperature of overflowing water equals to the initial temperature of bathtub.}Because the process of water overflowing is very rapid, the temperature of the overflowing water changes little.\\
+{\bf(5) } \textbf{The temperature of the room does not change.}The hot steam have little influence on the temperature of the room, so the temperature of the room almost remain unchanged.
 
 
 \section{Symbol Description}
@@ -420,8 +424,14 @@ L(z)=\pi (\frac{3}{2}(a(z)+b(z))-\sqrt{a(z)b(z)})
 \indent So we can get the lateral area through the integral (\ref{ds})
 \begin{equation}
 	S_{3}=\int ds=\int_{0}^{h}\pi \sqrt{1+\frac{4d^{2}z^{2}}{h^{4}}}(\frac{3}{2}(a(z)+b(z))-\sqrt{a(z)b(z)})dz
-\end{equation}
-
+\end{equation}\\\\
+\noindent\
+\textbf{Simulation Result}\\\\
+\begin{figure}[H]
+	\centerline{\includegraphics[height=8cm]{oval2.png}}
+	\caption{The shape of bathtub based on circles}
+	\label{circle}	
+\end{figure}
 \subsubsection{Bathtub based on circles}
 \begin{figure}[H]
 \centerline{\includegraphics[height=8cm]{circle.png}}
