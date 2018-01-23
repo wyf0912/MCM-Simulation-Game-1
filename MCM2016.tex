@@ -37,15 +37,16 @@ First, using the heat conduction formula, the heat convection formula and the fo
 \indent
 The model is simulated and verified by the statistics and results. As for the first type-add hot water, we determine an appropriate water flow rate per unit time, to make temperature fluctuations remain within the range ($0.1^{\circ}C$ ). We simulate the degradation to figure out the approximate optimal solution, which results in a more stable temperature and less waste. As for the second type, we adjust the PID index and build a more stable model, in which the temperature remains unchanged almost, the amount of water reduce by 8-13\% compared with manual adjustment. Considering the random water flow spillover, we simulate two models and validate the stability.\\
 \indent
-The model is improved in consideration of the size of human body, movement and body temperature. The relation between body size and surface area and height and weight was obtained by using data and empirical formula. Because the internal temperature of human is kept constant, we add the heat absorption model to the heat dissipation model using Newton's law of cooling. In the model of the water change, we add the impact of body volume on the level of the water, and the amount of water overflow that may occur due to the movement of people.\\
+The model is improved in consideration of the size of human body, movement and body temperature. The relation between body size and surface area and height and weight is obtained by using data and empirical formula. Because the internal temperature of human is kept constant, we add the heat absorption model to the heat dissipation model using Newton's law of cooling. In the model of the water change, we add the impact of body volume on the level of the water, and the amount of water overflow that may occur due to the movement of people.\\
 \indent
-Bubble is considered to influence mainly heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model. Because the air in the bubble will be saturated in a short time, we ignore the evaporation in the heat loss model.\\
+Bubble is considered to  mainly influence heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model. Because the air in the bubble will be saturated in a short time, we ignore the evaporation in the heat loss model.\\
 \indent
-We simulate under different conditions, give the results. And the effects of different factors are compared and analyzed. Finally, we give the strengths and weaknesses of our models. \\
+We simulate under different conditions, give the results. And the effects of different factors are compared and analyzed. \\
+\indent Finally, we give the strengths and weaknesses of our models. \\
 
 
 \begin{keywords}
- \textbf{Heat dissipation model,\indent Continuous water addition model, Continues system simulation,\indent Simulate Anneal Arithmetic(SAA),\indent PID}
+ \textbf{Heat dissipation model,\indent Continuous water addition model, \indent Continues system simulation,\indent Simulate Anneal Arithmetic(SAA),\indent PID}
 \end{keywords}
 \end{abstract}
 
@@ -57,12 +58,12 @@ We simulate under different conditions, give the results. And the effects of dif
 \setcounter{page}{1}
 %Section 1
 \section{Introduction}
-\indent the traditional bathtub is a simple waterproof container.
-the bathtub temperature is decreasing and people need to constantly add hot water to maintain the temperature.\\
+\indent The traditional bathtub is a simple waterproof container.
+The bathtub temperature is decreasing and people need to constantly add hot water to maintain the temperature.\\
 \indent We want to establish such a viable model which can automatically add hot water to keep the temperature of the bathtub at the comfort temperature. At the same time saving water resources needs to be considered.\\
 \indent To solve this problem, we need to consider the impact of the bathtub shape and size on this model. Person's shape, size and temperature are also under consideration.\\
 \indent First, if we want to establish the water temperature model of the bathtub, we need to consider two aspects of heat about dissipation and heating.\\
-\indent For the heat dissipation model of the bathtub, we should determine which part of the bathtub heat dissipation and the dissipation mode of these parts. For the heating model of the bathtub, we need to consider whether the heating mode is manually heated or automatically heated. We have taken into account the upper limit of the tub volume. So we should constraint the upper limit of the water volume and establish a drainage model.\\
+\indent For the heat dissipation model of the bathtub, we should determine which part of the bathtub heat dissipation and the dissipation mode of these parts. For the heating model of the bathtub, we need to consider whether the heating mode is manually heated or automatically heated. We have taken into account the upper limit of the tub volume. So we should constraint the upper limit of the water volume and establish a drainage model.\\
 \indent After establishing the model, we have to consider how to solve the model. And we want to use the simulation software to solve the model by finding the appropriate value to make the temperature constant. Then we will think about how to optimize the model and make the error of the value smaller. \\
 \indent At the same time we also need to consider the effect of the shape and volume of the bathtub on the model. We want to abstract the geometric properties of the bathtub as a function expression. We will try to minimize the impact of geometric properties of the bathtub on the model. We also want to design specific bathtub shapes to analysis.\\
 \indent Considering the effect of the human body on the model of the bathtub, we mainly determine how the temperature and volume of people effect the water temperature model. We will also explore how the behavior of people changes which attributes of the bathtub model.
@@ -130,7 +131,7 @@ Consider the impact of bubble. We will mainly through the thermodynamic equation
 In order to analyze the situation of heat dissipation. 
 We need to start from the bathtub.
 The effect of a bathtub on heat loss is mainly in material and shape.\\
-\indent The surface area of the liquid is variable because of the different shapes and attributes about bathtubs. Likewise the contact area of liquid and bathtub. Therefore We use functions to describe the relationship between the surface area of liquid, the liquid surface height and the contact area of liquid and bathtub. \\
+\indent The surface area of the liquid is variable because of the different shapes and attributes about bathtubs. Likewise the contact area of liquid and bathtub. Therefore we use functions to describe the relationship between the surface area of liquid, the liquid surface height and the contact area of liquid and bathtub. \\
 \indent We use these abstract expression to avoid the effect of exact shapes and attributes on the model.
 \begin{equation}
 \begin{split}
@@ -140,8 +141,11 @@ S_{2}=S_{2}(h)  \\
 \end{split}
 \end{equation}
 \indent The water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. So we So we decompose the model into two parts:\\
-\indent \indent1) Liquid surface heat loss model\\
-\indent \indent2) contact area of liquid and bathtub heat loss model
+\begin{itemize}
+\item{Liquid surface heat loss model.\\ }
+\item{contact area of liquid and bathtub heat loss model.\\ }
+\end{itemize}
+
 \subsection{Liquid surface heat loss model}
 \indent The water dissipation mode including three parts: evaporation heat, convection heat and radiative heat dissipation.We use the coefficient of heat dissipation and dissipation general formula to get results.
 \\
@@ -212,7 +216,7 @@ Q_{side}&=\int_{side}dQ\\
 
 \indent The specific forms of $Q_{upper}$ and $Q_{side}$ can be obtained from the above. 
 
-\section{Model of hot water addition}
+\section{Model of Hot Water Addition}
 \subsection{Influence of inflowing water on quantity of heat and volume}
 \indent First, we should establish an abstract model to describe the heating process.\\
 \indent The water in the bathtub is heated by the hot water flowing into it. So we should consider the energy and the volume of water in unit time. \\
@@ -296,9 +300,9 @@ The function of D is to Forecast the change trend.\\
 \end{figure}
 \indent We introduce the I and D items to reduce the frequency of the shock and make the water temperature as stable as possible. The subgraph (a) in figure \ref{PID2} shows when we introduce I, the static difference can be eliminated. \\
 \indent The subgraph (b) in figure \ref{PID2} shows when we also introduce the D item at the same time. The temperature trend becomes more stable.\\
-\section{Solutions for tasks}
+\section{Solutions for Tasks}
 \subsection{Model Implementation with Computer}
-\indent In the above, We've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
+\indent In the above, we've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
 \indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
 \indent The figure below shows the process of simulation:
  \begin{figure}[H]
@@ -307,7 +311,7 @@ The function of D is to Forecast the change trend.\\
 \label{oval}	
 \end{figure}
 
-\subsection{model testing}			%6.2 model test
+\subsection{Model Testing}			%6.2 model test
 \indent First, we need to verify the accuracy of the heat dissipation model.
 We want to verify whether the model of the temperature change over time is in accordance with the actual situation.\\
 \indent We set the bath time as half an hour. And we don't add hot water or bubble bath additive in the bathtub. \\
@@ -319,7 +323,7 @@ We want to verify whether the model of the temperature change over time is in ac
 \indent The model implementation with computer is shown in the figure.
 We can get that the temperature in the bathtub has fallen as time goes on.It drops 4.5$^{\circ}C$ as half an hour in the bathtub. And in the indoor environment, we find the temperature of most bathtub without constant temperature system drops from 3 to 5$^{\circ}C$ in half an hour. \\ \indent Our results is within this range. So the model fits the reality.               
 	%模型的检验，没有加热水时候浴缸内水温度降低的趋势符合现实
-\subsection{solve the model}%模型的求解，找到一个适合的值，使水温变化小
+\subsection{Solve the Model}%模型的求解，找到一个适合的值，使水温变化小
 \indent As we mentioned in the model of hot water addition, when the inflow of water per unit time changes, the heat that the bathtub get is different. So we can change the amount of inflowing water during unit time to make the temperature of bathtub different.\\ 
 \indent We want to find a water inflowing per unit time which make the temperature is kept near the initial temperature of the bathtub. 
 So we use the minimum dichotomy by constantly changing the amount of inflowing water during unit time. \\			
@@ -345,32 +349,32 @@ So we use the minimum dichotomy by constantly changing the amount of inflowing w
 \end{figure}
 \indent The curves tell that our hot water is set perfectly, the temperature will neither get too high nor get too low. \\
 \indent When the water inflowing per unit time is $V_{best}$. We got a result that the fluctuation of the temperature is always kept in a range from $0$ to $0.1$. And the goal of keeping the temperature as close as possible to the initial temperature is achieved.
-\subsection{model optimization}
+\subsection{Model Optimization}
 \indent It can be obtained from the above that when we use the minimum dichotomy to find the $V_{best}$,  there always have a range from $0$ to $0.1$. It may bring some error. And we want to minimize the error of the model as we can. So we try to use the simulated annealing algorithm to optimize our model. 
-\subsubsection{simulated annealing algorithm}
+\subsubsection{Simulated Annealing Algorithm}
 \indent Starting from a higher initial temperature, the simulated annealing algorithm randomly searches for the global optimal solution of the objective function in the solution space with the sudden drop of the temperature parameter. In other words, the local optimal solution can jump out of probability Eventually tends to the global optimum.
-\subsubsection{Optimization results}
-\indent We use python to implement simulated annealing algorithm.We call library functions of simulated annealing algorithm optimize our model. Finally, we successfully optimize our model and made the range of the $V_{best}$ get less. As shown in the picture:
+\subsubsection{Optimization Results}
+\indent We use Python to implement simulated annealing algorithm.We call library functions of simulated annealing algorithm optimize our model. Finally, we successfully optimize our model and made the range of the $V_{best}$ get less. As shown in the picture:
 \begin{figure}[H]	%图1.3
 \centerline{\includegraphics[height=8cm]{Figure_3-1.png}}
 \caption{temperature varying with time when optimized}
 \label{oval}	
 \end{figure}
 \indent We can find that the curve of temperature with optimization approximately coincides with another curve without optimization. We got two curves with less variance. So The fluctuation of the temperature gets smaller. We successfully optimize our model.
-\subsection{Verifying the stability of the model}%验证模型的稳定性
+\subsection{Verifying the Stability of the Model}%验证模型的稳定性
 \indent In real life, everyone's bath time is different. We should consider that some persons want to bath for longer time. So we should prolong the abscissa with more bath time to verify the stability of the model.\\
-\indent We prolong the bath time to 150 minutes. The figure below shows the change when time prolong.
+\indent We prolong the bath time to 150 minutes. The figure below shows the change when time prolongs.
 \begin{figure}[H]	%图1.3
 \centerline{\includegraphics[height=8cm]{Figure_1-1.png}}
 \caption{temperature varying with time when hot water is added}
 \label{oval}	
 \end{figure}
 \indent Therefore, when hot water is not added, the temperature will decrease with time constantly, even the temperature will be lower than the room temperature set previously.
-But when hot water is added, the temperature can also be kept well. So our model is stable and effective.
+But when hot water is added, the temperature can also be kept well. So our model is \textbf{stable} and \textbf{effective}.
 
 %Section 7
-\section{Factors that affect the model}
-\subsection{The influence of the bubble}
+\section{Factors that Affect the Model}
+\subsection{The Influence of the Bubble}
 \indent In our model, when bubble exists in the surface of water, the heat dissipation will change.\\
 \indent In the discussion above, we know that heat dissipation consists mainly of thermal evaporation, thermal radiation, and thermal convection. Thermal evaporation occurs mainly in the air when the humidity is not yet saturated. When bubble exists, the little air between the surface of water and bubble will soon reach saturation. So there will be no thermal evaporation.\\
 \indent Thermal radiation is an radiation of an electromagnetic wave. When the wave passes through a different medium( bubble and air), it will reflect back to the water. The amount of reflection is measured by reflection coefficient $R$.\\
@@ -404,9 +408,9 @@ Q_{upper}&=\int_{upper}dQ\\
 \end{figure}
 Through the analysis of Figure \ref{bubble}, we can find that bubbles can increase a small amount of thermal insulation.
 
-\subsection{Different shapes of the bathtub}
+\subsection{Different Shapes of the Bathtub}
 We model and analysis several different shapes of bathtubs.
-\subsubsection{Bathtub based on ovals}
+\subsubsection{Bathtub based on Ovals}
 \begin{figure}[H]
 \centerline{\includegraphics[height=8cm]{oval.png}}
 \caption{The shape of bathtub based on ovals}
@@ -509,7 +513,7 @@ And we can get the area of side surface $S_{3}$ of the bathtub.
 %subsection 4.1
 We improved our model in view of the human body influence. Our improvement is mainly in the following aspects.
 \subsubsection{The influence of the heat conduction}%sub subsection 4.1.1
-The interior of the body is basically maintained at a constant temperature, and the temperature of the skin is close to the water in bathtub. So we can simplify the question.The simplified question is illustrated as floows.\\
+The interior of the body is basically maintained at a constant temperature, and the temperature of the skin is close to the water in bathtub. So we can simplify the question.The simplified question is illustrated as follows.\\
 
 \begin{figure}[H]
 \centerline{\includegraphics[height=6cm]{skin.png}}
@@ -603,7 +607,7 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 	\end{tabular}
 \end{table}
 
-\section{Sensitivity analysis}
+\section{Sensitivity Analysis}
 \subsection{Selection of indictors}%subsection 6.1
 \subsection{Selection of aggregation method}%subsection 6.2
 \section{Strengths and Weaknesses}
