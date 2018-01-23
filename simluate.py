@@ -27,9 +27,9 @@ class Bathtub:
         self.sigma = 5.432e-8
         self.deltaP = 0.6*self.p2
 
-        self.pid_p = 0.05
-        self.pid_i = 0.00026
-        self.pid_d = 0.0008
+        self.pid_p = 0.002
+        self.pid_i = 0.0001
+        self.pid_d = 0.001
         self.pid_int_i=0
         self.pid_last_error=0
 
@@ -129,6 +129,17 @@ class Bathtub:
         plt.legend()
         return self.total_v,self.int_error
 
+oval1 = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3,v_person=0.075,h_person=1.85)
+oval2 = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3,v_person=0.070,h_person=1.7)
+oval4 = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3,v_person=0.080,h_person=1.7)
+oval3 = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3)
+
+oval1_ = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3,v_person=0.075,h_person=1.85,action=1,line='--')
+oval2_ = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3,v_person=0.070,h_person=1.7,action=1,line='--')
+oval4_ = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3,v_person=0.080,h_person=1.7,action=1,line='--')
+oval3_ = Bathtub(0.15, 38,38, oval_h, oval_s1, oval_s2, oval_s3)
+
+
 circle1 = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.075,h_person=1.85)
 circle2 = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.070,h_person=1.7)
 circle4 = Bathtub(0.2, 38,38, circle_h, circle_s1, circle_s2, circle_s3,v_person=0.080,h_person=1.7)
@@ -148,16 +159,20 @@ plt.ylabel('Temperature/degree')
 minimum=''
 #minimum = optimize.brute(circle.simluate,ranges = ((0.00003, 0.00006),))
 #print(minimum)
-#print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
-#print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
-#print(circle4.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
+#print(oval3.simluate(0.0000,pid=False,label_str="Oval bathtub",bubble=0))
+print(oval3.simluate(0.0000213,pid=False,label_str="Oval bathtub with 21.3ml\s hot inflow",bubble=0))
+print(oval3_.simluate(0.0000,pid=True,label_str="Oval bathtub with PID",bubble=0))
+'''
+print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
+print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
+print(circle4.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
 print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
 
 print(circle1_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
 print(circle2_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
 print(circle4_.simluate(0.0000373,pid=True,label_str="PID hot water inflows with person and action(80kg 1.70m)",bubble=1))
 print(circle3_.simluate(0.0000373,pid=True,label_str="PID hot water inflows without person",bubble=1))
-
+'''
 
 #print(circle3.simluate(0,label_str="No hot water inflows",bubble=1))
 
