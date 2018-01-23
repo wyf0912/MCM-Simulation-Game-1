@@ -464,7 +464,7 @@ L(z)=\pi (\frac{3}{2}(a(z)+b(z))-\sqrt{a(z)b(z)})
 \indent We simulate the optimization of water inflow using the annealing algorithm  and water inflow adjusted by PID. The result is as follows
 \begin{figure}[H]
 	\centerline{\includegraphics[height=8cm]{oval2.png}}
-	\caption{The shape of bathtub based on circles}
+	\caption{Comparison of two kinds of water adding methods}
 	\label{circle}	
 \end{figure}
 \indent We can find that the optimal manual adjustment is a little better than the PID control. The reason is that the PID automatic regulation depends on the temperature measurement accuracy. But the temperature stability of  two methods is also very good.
@@ -498,13 +498,21 @@ And we can get the area of side surface $S_{3}$ of the bathtub.
 \\\\
 \noindent\
 \textbf{Simulation Result}\\\\
-\indent We compare two ways of adding hot water. And when  
+\indent We compare two ways of adding hot water.   
 \begin{figure}[H]
 	\centerline{\includegraphics[height=10cm]{Figure_4-2.png}}
 	\caption{Comparison of two kinds of water adding methods}
 	\label{circle}	
 \end{figure}
-
+The results show that the PID regulation is more stable.\\\\
+\noindent
+\textbf{Comparison of Simulation Results}\\\\
+\begin{figure}[H]
+	\centerline{\includegraphics[height=10cm]{duibi2.png}}
+	\caption{Comparison of bathtub shapes and water adding methods}
+	\label{circle}	
+\end{figure}
+\indent We compare the heat dissipation and the automatic water injection model of two kinds of bathtub models. The results show that the PID algorithm has a good adaptability. And because the surface area of the elliptical bathtub is small and the heat dissipation is slow, the result is consistent with the reality.
 \subsection{The effect of human body and body temperature on the model}
 %subsection 4.1
 We improved our model in view of the human body influence. Our improvement is mainly in the following aspects.
@@ -625,7 +633,8 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 \bibitem{2}Peimin Pu. Study on the formula of evaporation and heat dissipation of water surface(1)[J]. Journal of Lake Sciences, 1994(01):1-12.
 \bibitem{3}Peimin Pu. Study on the formula of evaporation and heat dissipation of water surface(2)[J]. Journal of Lake Sciences, 1994(03):201-210
 \bibitem{4}Xinyong Chen, Jing Zhu, Longxi Han. Determination method and sensitivity analysis of water surface comprehensive heat dissipation coefficient [J]. Water Sciences and Engineering Technology, 2007(05):9-13.
-\bibitem{5}Bowen L S. The ratio of heat losses by conduction and by evaporation from any water surface [J].phts.Rev.,1926,27:779-787.\bibitem{6} Baowei Xiang. Research and application of simulated annealing algorithm in structural optimization[D]. Dalian University of Technology,2004.
+\bibitem{5}Bowen L S. The ratio of heat losses by conduction and by evaporation from any water surface [J].phts.Rev.,1926,27:779-787.
+\bibitem{6} Baowei Xiang. Research and application of simulated annealing algorithm in structural optimization[D]. Dalian University of Technology,2004.
 \end{thebibliography}
 
 
