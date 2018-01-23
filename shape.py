@@ -20,5 +20,17 @@ def circle_s3(h):
 
 def oval(v):
     r = 0.75
-    h = v/(math.pi*r*r)
+    h = v/(math.pi*1.6*0.72*4)
     return h
+
+def oval_s1(h):
+    return math.pi* 0.8*0.36
+
+def oval_s2(h):
+    return math.pi * 0.65*0.3
+
+def oval_s3(h):
+    return math.pi * (1.5(0.8+0.36)-pow(0.8*0.36, 0.5))*h
+
+
+

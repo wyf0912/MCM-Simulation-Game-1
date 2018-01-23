@@ -28,8 +28,8 @@ class Bathtub:
         self.deltaP = 0.6*self.p2
 
         self.pid_p = 0.05
-        self.pid_i = 0.000#26
-        self.pid_d = 0.000#8
+        self.pid_i = 0.00026
+        self.pid_d = 0.0008
         self.pid_int_i=0
         self.pid_last_error=0
 
@@ -150,12 +150,12 @@ minimum=''
 #print(minimum)
 #print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
 #print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
-#print(circle4.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
+#print(circle4.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
 print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
 
-#print(circle1_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
-#print(circle2_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
-#print(circle4_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(80kg 1.70m)",bubble=1))
+print(circle1_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
+print(circle2_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
+print(circle4_.simluate(0.0000373,pid=True,label_str="PID hot water inflows with person and action(80kg 1.70m)",bubble=1))
 print(circle3_.simluate(0.0000373,pid=True,label_str="PID hot water inflows without person",bubble=1))
 
 

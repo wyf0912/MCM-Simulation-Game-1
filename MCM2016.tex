@@ -521,7 +521,16 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 	\caption{The effect of body action}
 	\label{action}	
 \end{figure}
-\indent By analyzing the Figure \ref{action}, we can find that the action and no action curve basically coincide. Therefore, the action has little effect on the trend of temperature change.
+
+When we \textbf{manually} adjust the amount of water, by analyzing the Figure \ref{action}, we can find that when action and no action curve basically coincide. Therefore, the action has little effect on the trend of temperature change.\\
+
+\begin{figure}[H]
+	\centerline{\includegraphics[height=10cm]{PID_5.png}}
+	\caption{The effect of body action on PID model}
+	\label{action_pid}	
+\end{figure}
+When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure \ref{action_pid}, we can find that there are some difference of action and no action curves. But the stability of the temperature is basically the same\\
+\indent We generally use the single variable principle to sum up the simulation data. The data obtained under different heating methods and influencing factors are shown in the table below 
 \begin{table}[H]
 	\setlength{\abovecaptionskip}{0pt}
 	\setlength{\belowcaptionskip}{0pt}
@@ -530,10 +539,10 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 		\hline
 		\rowcolor[gray]{0.9}\bf{water flow}	&\bf{Water consumption} &\bf{bubble}&\bf{body shape}&\bf{action}&\bf{temperature variance} \\
 		\hline
-		PID 	 & 68.838L &No  &No &No &0.007026\\
+		PID 	 & 68.838L &No  &No &No &0.0661\\
 		40.0ml/s   & 72.000L &No  &No &No &15.66907\\
 		\hline
-		PID 	 & 64.006L &Yes &No &No &0.007026\\
+		PID 	 & 64.006L &Yes &No &No &0.0621\\
 		40.0ml/s   & 72.000L &Yes &No &No &86.95530\\
 		\hline
 		37.3ml/s & 67.140L &Yes &No &No &15.61321\\
@@ -541,13 +550,14 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 		37.3ml/s & 67.140L &Yes &70kg 1.70m &Yes &3.612\\
 		37.3ml/s & 67.140L &Yes &80kg 1.70m &Yes &3.279\\
 		\hline
-		PID & 64.006L &Yes &No &No &0.00702\\
-		PID & 66.167L &Yes &75kg 1.85m &Yes &0.00750\\	
-		PID & 66.042L &Yes &70kg 1.70m &Yes &0.00747\\
-		PID & 66.286L &Yes &80kg 1.70m &Yes &0.00753\\
+		PID & 63.856L &Yes &No &No &0.06619\\
+		PID & 66.367L &Yes &75kg 1.85m &Yes &0.05963\\	
+		PID & 66.222L &Yes &70kg 1.70m &Yes &0.06282\\
+		PID & 66.170L &Yes &80kg 1.70m &Yes &0.062188\\
 		\hline
 	\end{tabular}
 \end{table}
+By analyzing the data on the table, we can 
 \section{Sensitivity analysis}
 \subsection{Selection of indictors}%subsection 6.1
 \subsection{Selection of aggregation method}%subsection 6.2
