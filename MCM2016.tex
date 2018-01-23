@@ -280,7 +280,12 @@ and the function of I is to Eliminate static error.\\
 \begin{equation}
 D=Kd\times (T_{error}-T_{last_error})
 \end{equation}
-The function of D is to Forecast the change trend.\\
+\indent The function of D is to Forecast the change trend.\\
+\indent The output water is $dV$ :
+\begin{equation}
+	dV=P+I+D
+\end{equation}
+\indent If the amount of output water is larger than $100ml/s$, calculate the $dV$ as $100ml/s$. And if the amount is less than $0ml/s$, alculate the $dV$ as $0ml/s$.
 \begin{figure}[H]
 \centering
 \subfigure[When Kp is too small]{
@@ -682,7 +687,10 @@ Through the analysis of Table 4, We can get the following conclusions
 \item{\textbf{The motions of people is simplified.}The motions of people are too complicated and variable to consider. Some complicated motions may bring more influence on our model. }
 \end{itemize}
 
-
+\section{Explanation for users}
+\indent The bathtub we use in our daily life is a simple water containment, in order to take a shower comfortably, we need constantly add hot water in the bathtub.\\\indent Here, we give the explanation of the strategy to add water researched in this paper.\\\indent If the volume of your bathtub is a little bigger than normal size, you should increase the amount of inflowing water. You'd better buy the bathtub with smaller top surface. \\\indent If you are fat, first you should increase the amount of inflowing water. But if the water in the bathtub reaches the upper limit, you can slightly reduce your water inflowing. Bubble additive can provide you with a more comfortable bathing. \\\indent And if you want to save water, you should use the automatic control.\\
+\indent While, keeping the temperature as close as possible to the initial temperature is difficult.\\
+\indent There are all kinds of factors about heat loss like wind speed, saturated pressure and bathtub material. And environmental conditions are constantly changing. The different temperature, volume and motions of people also influence the temperature in the bathtub.  So it’s difficult to keep the temperature as close as possible to the initial temperature.
 \section{References}
 \begin{thebibliography}{99}
 \bibitem{1}Zhenguo Zhao. Formula of enthalpy difference for water surface heat dissipation and its application[J]. Journal of Hydraulic Engineering, 2004(02):34-38.
