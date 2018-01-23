@@ -201,7 +201,7 @@ Q_{side}&=\int_{side}dQ\\
 \end{equation}
 \subsection{The bathtub heat loss model} 	%4.2
 
-\indent Just as I mentioned above, the water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. \\
+\indent Just as we mentioned above, the water in the bathtub dissipates heat by contacting the air on the upper surface and the bathtub wall on the side surface. \\
 
 \indent So the total heat dissipating capacity during unit time is:
 \begin{equation}
@@ -254,6 +254,10 @@ T_{error}=T_{target}-T_{real}
 \end{equation}
 and the function of I is to Eliminate static error.\\
 \indent D is a differential term.
+\begin{equation}
+D=Kd\times (T_{error}-T_{last_error})
+\end{equation}
+The function of D is to Forecast the change trend.\\
 \begin{figure}[H]
 \centering
 \subfigure[When Kp is too small]{
@@ -267,7 +271,12 @@ and the function of I is to Eliminate static error.\\
 \end{minipage}
 }
 \caption{Only use Kp}
+\label{PID1}
 \end{figure}
+
+
+\indent We found that only the use of P is not a good way to adjust the temperature of the water. For example, the subgraph (a) in figure \ref{PID1} shows the situation when Kp is small. There is a static difference between the expected temperature and the actual temperature. So we need to increase the value of Kp.\\
+\indent The subgraph (b) in figure \ref{PID1} shows when the Kp is increased, the temperature produces a high frequency shock\\
 
 \begin{figure}[H]
 \centering
@@ -282,8 +291,10 @@ and the function of I is to Eliminate static error.\\
 \end{minipage}
 }
 \caption{Use Kp, Ki, Kd}
+\label{PID2}
 \end{figure}
-
+\indent We introduce the I and D items to reduce the frequency of the shock and make the water temperature as stable as possible. The subgraph (a) in figure \ref{PID2} shows when we introduce I, the static difference can be eliminated. \\
+\indent The subgraph (b) in figure \ref{PID2} shows when we also introduce the D item at the same time. The temperature trend becomes more stable.\\
 \section{Solutions for tasks}
 \subsection{Model Implementation with Computer}
 \indent In the above, We've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
@@ -559,11 +570,6 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \end{thebibliography}
 
 \begin{appendices}
-Here are  programmes we used in our model as follow.\\
-\textbf{\textcolor[rgb]{0.98,0.00,0.00}{calculation of SGI matlab source:}}
-\lstinputlisting[language=Matlab]{./code/model.m}
-\textbf{\textcolor[rgb]{0.98,0.00,0.00}{calculation of weight by the entropy method matlab source:}}
-\noindent{\lstinputlisting[language=Matlab]{./code/entropy.m}}
 \end{appendices}
 
 \end{document}

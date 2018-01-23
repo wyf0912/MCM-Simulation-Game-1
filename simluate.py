@@ -27,10 +27,11 @@ class Bathtub:
         self.sigma = 5.432e-8
         self.deltaP = 0.6*self.p2
 
-        self.pid_p = 0.018
-        self.pid_i = 0
-        self.pid_d = 0
+        self.pid_p = 0.05
+        self.pid_i = 0.000#26
+        self.pid_d = 0.000#8
         self.pid_int_i=0
+        self.pid_last_error=0
 
         self.total_v = 0
         self.int_error = 0
@@ -87,7 +88,12 @@ class Bathtub:
 
     @property
     def pid(self):
-        output = self.pid_p*(self.target_T-self.T)
+        error=(self.target_T-self.T)
+        if abs(error) <0.01:
+            error=0
+        self.pid_int_i+=error
+        output = self.pid_p*error+self.pid_int_i*self.pid_i+(error-self.pid_last_error)*self.pid_d
+        self.pid_last_error = error
         if output>0:
             if output>0.0001:
                 return 0.0001
@@ -141,16 +147,16 @@ plt.ylabel('Temperature/degree')
 
 minimum=''
 #minimum = optimize.brute(circle.simluate,ranges = ((0.00003, 0.00006),))
-print(minimum)
-print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
-print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
+#print(minimum)
+#print(circle1.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(75kg 1.85m)",bubble=1))
+#print(circle2.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(70kg 1.70m)",bubble=1))
 #print(circle4.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person(80kg 1.70m)",bubble=1))
-#print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
+print(circle3.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
 
-print(circle1_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
-print(circle2_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
-#print(circle4_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows with person and action(80kg 1.70m)",bubble=1))
-#print(circle3_.simluate(0.0000373,pid=False,label_str="37.3ml/s hot water inflows without person",bubble=1))
+#print(circle1_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(75kg 1.85m)",bubble=1))
+#print(circle2_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(70kg 1.70m)",bubble=1))
+#print(circle4_.simluate(0.0000373,pid=True,label_str="37.3ml/s hot water inflows with person and action(80kg 1.70m)",bubble=1))
+print(circle3_.simluate(0.0000373,pid=True,label_str="PID hot water inflows without person",bubble=1))
 
 
 #print(circle3.simluate(0,label_str="No hot water inflows",bubble=1))
