@@ -43,7 +43,8 @@ Bubble is considered to  mainly influence heat loss model. We calculate the refl
 \indent
 We simulate under different conditions, give the results. And the effects of different factors are compared and analyzed. \\
 \indent Finally, we give the strengths and weaknesses of our models. \\
-
+\end{abstract}
+\begin{keywords} \textbf{Heat dissipation model,\indent Continuous water addition model, \indent Continues system simulation,\indent Simulate Anneal Arithmetic(SAA),\indent PID}\end{keywords}
 \maketitle
 \tableofcontents\thispagestyle{empty}
 %设置页眉
@@ -214,14 +215,14 @@ Q_{side}&=\int_{side}dQ\\
 \subsection{Influence of inflowing water on quantity of heat and volume}
 \indent First, we should establish an abstract model to describe the heating process.\\
 \indent The water in the bathtub is heated by the hot water flowing into it. So we should consider the energy and the volume of water in unit time. \\
-\indent Set the unit time flow of the faucet as $ V $, and the temperature of the inflow water is $ t_{in}$. Because the  heat capacity of water changes in a very small degree, we can use $0^{\circ}$ as the reference point which means the relative quantity of heat is 0.\\
+\indent Set the unit time flow of the faucet as $ dV $, and the temperature of the inflow water is $ t_{in}$. Because the  heat capacity of water changes in a very small degree, we can use $0^{\circ}$ as the reference point which means the relative quantity of heat is 0.\\
 \indent Compared to the energy reference, during unit time the energy of water poured in is:
 \begin{equation}
-	q_{in}=C\rho Vt_{in} 
+	q_{in}=C\rho dVt_{in} 
 \end{equation}
 \indent Adding hot water is a continuous process. Then in the constant $ T_{1} $ seconds of adding hot water, the total energy brought into the bathtub is:
 \begin{equation}
-	Q_{in}=q_{in}T_{1}=C\rho Vt_{in}T_{1}
+	Q_{in}=q_{in}T_{1}=C\rho dVt_{in}T_{1}
 \end{equation}
 \indent Meanwhile, the volume of water brought into the bathtub is:
 \begin{equation}
@@ -229,7 +230,25 @@ Q_{side}&=\int_{side}dQ\\
 \end{equation}
 
 \subsection{Add a constant flow of hot water}
-In order to facilitate user operation, we give up the discrete model using complicated intermittent inflow water.
+In order to facilitate user operation, we give up the discrete model using complicated intermittent inflow water.\\
+\indent We discuss the process of adding water in two cases
+\begin{itemize}
+\item{
+When the water level does not reach the upper limit of the maximum water level,we can use (\ref{dT}) to calculate the temperature change rate
+\begin{equation}
+	\frac{\mathrm{d} T}{\mathrm{d} t}=\frac{C\rho dVT_{high}+C\rho V(h)T}{V(h)+dV}
+\label{dT}
+\end{equation}
+\item{
+	When the water level reaches the overflow, the volume of water is almost invariable. Because we assume that the water in the bathtub is quickly mixed and uniform,we can get the temperature change rate function
+	\begin{equation}
+	\frac{\mathrm{d} T}{\mathrm{d} t}=\frac{C\rho dVT_{high}+C\rho V_{max}T}{V_{max}+dV}
+	\label{dT}
+	\end{equation}
+	where $V_{max}$ means the maximum amount of water contained in the bathtub.
+}
+}
+\end{itemize}
 \subsection{Use automatic control algorithm to control flow velocity}
 The PID algorithm is a classic automatic control algorithm. Suppose we can get relatively accurate temperatures, accurately to 0.01$^{\circ}C$. And suppose the maximum flow rate of hot water is 100ml/s.\\
 \indent We can establish an automatic control equation, which includes three items of P, I and D.\\
@@ -527,7 +546,7 @@ The interior of the body is basically maintained at a constant temperature, and 
 \caption{Heat conduction model of human body}
 \label{skin}
 \end{figure}
-\indent We can assume that the temperature of the skin is the same as the water. We select the temperature of the rectum about 37.5 degrees as the body temperature. The problem can be simplified as the skin heat dissipating to the interior of the body.\\
+\indent We can assume that the temperature of the skin is the same as the water. We select the temperature of the rectum about 37.5$^{\circ}C$ as the body temperature. The problem can be simplified as the skin heat dissipating to the interior of the body.\\
 \indent So we can use {\bf Newton's law of cooling} to calculate the speed of heat dissipation.\\
 \begin{equation}
 \begin{split}
@@ -547,7 +566,7 @@ S= \begin{cases} & 0.0057*h+0.0121*w+0.0820\text{( man )} \\ & 0.0073*h+0.0127*w
 	\frac{\mathrm{d} Q}{\mathrm{d} t}=\phi =qA=Sh\Delta T
 	\label{Q_skin}
 \end{equation}
-where \emph{h}=1.48,${T_{f}}=37.5^{\circ}$. \\
+where \emph{h}=1.48,${T_{f}}=37.5^{\circ}C$. \\
 \indent We add this part of heat loss to our heat dissipation model. The change of temperature with time is obtained by the simulation program. And the result is drawn into a graph as follows
 \begin{figure}[H]
 	\centerline{\includegraphics[height=10cm]{Figure_4-5.png}}
@@ -613,6 +632,16 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 		\hline
 	\end{tabular}
 \end{table}
+\item{PID regulation saves about 9-12\% of water.}
+\item{Bubbles can slightly enhance the thermal insulation performance. The final water temperature is about 0.2${^\circ}C$ higher than that without bubbles under the same conditions.
+}
+\item{The amount of water consumption increases with the increase of human body shape, human movements have no special effect on the model. But to some extent, the more water overflow, less water consumption by PID regulation.
+}}
+\end{itemize}	
+
+\section{Sensitivity Analysis}
+\subsection{Selection of indictors}%subsection 6.1
+\subsection{Selection of aggregation method}%subsection 6.2
 \section{Strengths and Weaknesses}
 \subsection{Strengths}
 \begin{itemize}
