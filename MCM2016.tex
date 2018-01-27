@@ -29,19 +29,13 @@
 
 
 \title{Keep the Bathtub Warm}
-\indent In this paper, we focus on the need for keeping the initial temperature of the water in the bathtub without a secondary heating system and circulating jets as much as possible. We build a model of the temperature of the bathtub water in space and time , analysis the impact of the bathtub's volume, shape and factors of people, then make a non-technical statement.\\
+\indent In this paper,  We build a model of the temperature of the bathtub water in space and time, analysis the impact of the bathtub's volume, shape and factors of people, then make a non-technical statement.\\
 \indent
-Our model is mainly based on the loss and inflow of heat and variety of the amount of water.\\
+First, using the heat conduction formula, the heat convection formula and the formula of water surface evaporation, we build a basic heat dissipation model, including the dissipation of the surface of water and interface between water and bathtub. Through simulation, under the condition of $18^{\circ}C$ degrees at room temperature, the initial water quantity of 150L,  the water temperature is reduced by $3.5^{\circ}C$ for half an hour, which is basically consistent with the data provided by the merchant.\\ 
+\indent In order to keep the temperature and save the water, we design two ways of water adding. The first type is to add water by manual adjustment, while the second type is to adjust the water automatically by PID. Under the same environmental conditions as the heat dissipation model, the conditions of the temperature measuring accuracy of 0.01 degrees and the upper limit of the water amount are added, and the simulation results are obtained as follows. Both two methods can make temperature fluctuations remain within the range ($0.1^{\circ}C$ ) when parameters are property. And the amount of water used by PID reduces by 8-13\% compared with manual adjustment. The second order central moment of two methods are 44.874 and 0.0296 (on condition of round bathtub, no bubbles, 30 minutes of bath time, no human body, 37.3ml/s water inflow speed, and PID adjustment)\\
+\indent The influence of human lies in the absorption of heat, the change of water level, and action. For calculating the effect of human surface area, we use Newton's law of cooling to calculate the heat absorbed by body.  We add a water overflow which volume equals to 0.1\% volume of person to simulate human action (per 30 seconds on average). The results show that the average water consumption when person in bathtub is about 4.76\% more than the condition of no person. (on condition of oval bathtub, no bubble, with action, PID adjustment)\\
 \indent
-First, using the heat conduction formula, the heat convection formula and the formula of water surface evaporation, we build a basic heat dissipation model, including the dissipation of the surface of water and interface between water and bathtub. Due to the input of heat depends on the input of water, we build two models based on different ways of water adding. The first type is to add water by manual adjustment, while the second type is to adjust the water automatically by PID. For the variety of the amount of water, we limit the ceiling of water and build a basic drainage model.\\
-\indent
-The model is simulated and verified by the statistics and results. As for the first type-add hot water, we determine an appropriate water flow rate per unit time, to make temperature fluctuations remain within the range ($0.1^{\circ}C$ ). We simulate the degradation to figure out the approximate optimal solution, which results in a more stable temperature and less waste. As for the second type, we adjust the PID index and build a more stable model, in which the temperature remains unchanged almost, the amount of water reduce by 8-13\% compared with manual adjustment. Considering the random water flow spillover, we simulate two models and validate the stability.\\
-\indent
-The model is improved in consideration of the size of human body, movement and body temperature. The relation between body size and surface area and height and weight is obtained by using data and empirical formula. Because the internal temperature of human is kept constant, we add the heat absorption model to the heat dissipation model using Newton's law of cooling. In the model of the water change, we add the impact of body volume on the level of the water, and the amount of water overflow that may occur due to the movement of people.\\
-\indent
-Bubble is considered to  mainly influence heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model. Because the air in the bubble will be saturated in a short time, we ignore the evaporation in the heat loss model.\\
-\indent
-We simulate under different conditions, give the results. And the effects of different factors are compared and analyzed. \\
+Bubble is considered to  mainly influence heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model and ignore the evaporation in the heat loss model. The loss of heat caused by radiation is 0.94 times that of the original. Water consumption has been saved by 4.832L from 68.838L to 64.006L, on condition of oval bathtub, no person, PID adjustment.\\
 \indent Finally, we give the strengths and weaknesses of our models. \\
 
 
@@ -53,7 +47,7 @@ We simulate under different conditions, give the results. And the effects of dif
 \maketitle
 \tableofcontents\thispagestyle{empty}
 %设置页眉
-
+\newpage
 
 \setcounter{page}{1}
 %Section 1
@@ -71,10 +65,10 @@ Consider the impact of bubble. We will mainly through the thermodynamic equation
 %Section 2
 \section{Assumptions}
 \noindent
-{\bf (1) } \textbf{Evaporation will result in no loss of water.} The loss of water from evaporation is too little to consider, so we ignore the change of quantity of water.\\
-{\bf (2) } \textbf{Consider the energy of water in 36 ${^\circ}C$ as the energy reference.} For we can arbitrarily set our energy reference to be zero.\\
-{\bf (3) } \textbf{The temperature of inflowing can be set precisely.}The temperature of inflowing water set initially can be kept precisely by faucet, and will not change.\\
-{\bf(4) } \textbf{The temperature of overflowing water equals to the initial temperature of bathtub.}Because the process of water overflowing is very rapid, the temperature of the overflowing water changes little.\\
+{\bf (1) } \textbf{The temperature distribution in the bathtub is evenly distributed. }Because the temperature difference is small and the temperature distribution has little influence on the heat dissipation model, we can assume temperature distribution is evenly distributed to simplify the model.\\
+{\bf (2) } \textbf{Evaporation will result in no loss of water.} The loss of water from evaporation is too little to consider, so we ignore the change of quantity of water.\\
+{\bf (3) } \textbf{The flux of inflow can be set precisely.} Both two water adding methods can accurately control the flux of water.\\
+{\bf(4) } \textbf{The temperature of overflowing water equals to the average temperature in bathtub.} Because of the assumption that the temperature is uniform, the temperature of the overflow water equals to the average temperature in bathtub.\\
 {\bf(5) } \textbf{The temperature of the room does not change.}The hot steam have little influence on the temperature of the room, so the temperature of the room almost remain unchanged.
 
 
@@ -591,8 +585,7 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \indent We assume that the movements of persons can only lead to a water spill that is equivalent to a certain proportion of the body's volume. We set the volume of liquid for each overflow is $dv$
 \begin{equation}
 	dv=5\times10^{-3}v_{body}
-\end{equation}
-\indent We set the probability of water overflow per second is 0.02, which means there is an overflow of water on average in half a minute.\\\\
+\end{equation}\indent We set the probability of water overflow per second is 0.02, which means there is an overflow of water on average in half a minute.\\\\
 \noindent
 \textbf{Simulation Result}\\\\
 \indent We model the model with the added action impact model and compare it with the simulation results that have no action impact, and we get the following figure
@@ -683,7 +676,7 @@ Through the analysis of Table 3 and 4, We can get the following conclusions
 \begin{itemize}
 \item{\textbf{The motions of people is simplified.}The motions of people are too complicated and variable to consider. Some complicated motions may bring more influence on our model. }
 \end{itemize}
-\newpage
+
 \section{Explanation for users}
 \indent The bathtub we use in our daily life is a simple water containment, in order to take a shower comfortably, we need constantly add hot water in the bathtub.\\
 \indent Here, we give the explanation of the strategy to add water researched in this paper.\\
@@ -691,7 +684,7 @@ Through the analysis of Table 3 and 4, We can get the following conclusions
 \indent If you are fat, first you should increase the amount of inflowing water. But if the water in the bathtub reaches the upper limit, you can slightly reduce your water inflowing. Bubble additive can provide you with a more comfortable bathing. \\
 \indent And if you want to save water, you should use the automatic control.\\
 \indent While, keeping the temperature as close as possible to the initial temperature is difficult.\\
-\indent There are all kinds of factors about heat loss like wind speed, saturated pressure and bathtub material. And environmental conditions are constantly changing. The different temperature, volume and motions of people also influence the temperature in the bathtub.  So it’s difficult to keep the temperature as close as possible to the initial temperature.
+\indent There are all kinds of factors about heat loss like wind speed, saturated pressure and bathtub material. And environmental conditions are constantly changing. The different temperature, volume and motions of people also influence the temperature in the bathtub.  So it's difficult to keep the temperature as close as possible to the initial temperature.
 
 \section{References}
 \begin{thebibliography}{99}
