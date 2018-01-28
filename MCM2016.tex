@@ -279,7 +279,7 @@ D=Kd\times (T_{error}-T_{last_error})
 \begin{equation}
 	dV=P+I+D
 \end{equation}
-\indent If the amount of output water is larger than $100ml/s$, calculate the $dV$ as $100ml/s$. And if the amount is less than $0ml/s$, alculate the $dV$ as $0ml/s$.
+\indent If the amount of output water is larger than $100ml/s$, calculate the $dV$ as $100ml/s$. And if the amount is less than $0ml/s$, alculate the $dV$ as $0ml/s$. 
 \begin{figure}[H]
 \centering
 \subfigure[When Kp is too small]{
@@ -295,7 +295,7 @@ D=Kd\times (T_{error}-T_{last_error})
 \caption{Only use Kp}
 \label{PID1}
 \end{figure}
-
+\indent We simulated the PID algorithm in the environment of under the condition of 18 C degrees at room temperature, the initial water quantity of 150L.
 
 \indent We found that only the use of P is not a good way to adjust the temperature of the water. For example, the subgraph (a) in figure \ref{PID1} shows the situation when Kp is small. There is a static difference between the expected temperature and the actual temperature. So we need to increase the value of Kp.\\
 \indent The subgraph (b) in figure \ref{PID1} shows when the Kp is increased, the temperature produces a high frequency shock\\
