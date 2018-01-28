@@ -608,7 +608,7 @@ v_{body}=\frac{m}{\rho }=\frac{m}{1.06\times 10^{3}}(m^{3})
 \end{equation}\indent We set the probability of water overflow per second is 0.02, which means there is an overflow of water on average in half a minute.\\\\
 \noindent
 \textbf{Simulation Result}\\\\
-\indent We model the model with the added action impact model and compare it with the simulation results that have no action impact, and we get the following figure
+\indent We built the model with the added action impact and compare it with the simulation results that has no action impact, and we get the following figure
 \begin{figure}[H]
 	\centerline{\includegraphics[height=10cm]{Figure_4-6.png}}
 	\caption{The effect of body action}
@@ -659,7 +659,7 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 	\centering{(Environment:Initial water volume 150L,Room temperature 18$^{\circ}C$)}\\
 	\begin{tabular}{p{2cm}|p{2cm}|p{1.5cm}|p{3cm}|p{1cm}|p{2cm}}
 		\hline
-		\rowcolor[gray]{0.9}\bf{water flow}	&\bf{Water consumption} &\bf{bubble}&\bf{body shape}&\bf{action}&\bf{temperature variance} \\
+		\rowcolor[gray]{0.9}\bf{water flow}	&\bf{Water consumption} &\bf{bubble}&\bf{body shape}&\bf{action}&\bf{Two order center moment} \\
 		\hline
 		37.3ml/s & 38.339L &Yes &No 		&No  &44.8740\\
 		37.3ml/s & 38.339L &Yes &75kg 1.85m &Yes &40.6900\\	
@@ -673,7 +673,7 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 		\hline
 	\end{tabular}
 \end{table}
-
+\indent Finally, the results show that the average water consumption when person in bathtub is about 4.76\% more than the condition of no person. And the PID regulation saves about 9-12\% of water. The second order central moment of two methods are 44.874 and 0.0296. (On condition of round bathtub, no bubbles, 30 minutes of bath time, no human body, 37.3ml/s water inow speed, and PID adjustment)\\
 \subsection{Conclusion}
 Through the analysis of Table 3 and 4, We can get the following conclusions
 \begin{itemize}
