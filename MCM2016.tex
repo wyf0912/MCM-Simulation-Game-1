@@ -35,7 +35,7 @@ First, to calculate the value of dissipated heat, we use the heat conduction for
 \indent In order to keep the temperature and save the water, we design two ways of water adding. The first type is to add water by manual adjustment, while the second type is to adjust the water automatically by PID. Under the same environmental conditions as the heat dissipation model, the conditions of the temperature measuring accuracy of 0.01 degrees and the upper limit of the water amount are added, and the simulation results are obtained as follows. Both two methods can make temperature fluctuations remain within the range ($0.1^{\circ}C$ ) when parameters are property. And the amount of water used by PID reduces by 8-13\% compared with manual adjustment. The second order central moment of two methods are 44.874 and 0.0296 (on condition of round bathtub, no bubbles, 30 minutes of bath time, no human body, 37.3ml/s water inflow speed, and PID adjustment)\\
 \indent The influence of human lies in the absorption of heat, the change of water level, and action. For calculating the effect of human surface area, we use Newton's law of cooling to calculate the heat absorbed by body.  We add a water overflow which volume equals to 0.1\% volume of person to simulate human action (per 30 seconds on average). The results show that the average water consumption when person in bathtub is about 4.76\% more than the condition of no person. (on condition of oval bathtub, no bubble, with action, PID adjustment)\\
 \indent
-Bubble is considered to  mainly influence heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model and ignore the evaporation in the heat loss model. The loss of heat caused by radiation is 0.94 times that of the original. Water consumption has been saved by 4.832L from 68.838L to 64.006L, on condition of oval bathtub, no person, PID adjustment.\\
+Bubble is considered to  mainly influence heat loss model. We calculate the reflection coefficient to modify the value of radiation in heat loss model and ignore the evaporation in the heat loss model. The loss of heat caused by radiation is 0.98 times that of the original. Water consumption has been saved by 4.832L from 68.838L to 64.006L, on condition of oval bathtub, no person, PID adjustment.\\
 \indent Finally, we give the strengths and weaknesses of our models. \\
 
 
@@ -443,7 +443,7 @@ Q_{upper}&=\int_{upper}dQ\\
 	\caption{temperature varying with time when bubble is added}
 	\label{bubble}
 \end{figure}
-Through the analysis of Figure \ref{bubble}, we can find that bubbles can increase a small amount of thermal insulation.
+Through the analysis of Figure \ref{bubble}, we can find that bubbles can increase a small amount of thermal insulation. The final water temperature is about 0.2${^\circ}C$ higher than that without bubbles under the same conditions(constant water flux). The water consumption changed from 68.838L to 64.006L(under PID adjustment).
 
 \subsection{Different Shapes of the Bathtub}
 We model and analysis several different shapes of bathtubs.
@@ -627,7 +627,7 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 \begin{table}[H]
 	\setlength{\abovecaptionskip}{0pt}
 	\setlength{\belowcaptionskip}{0pt}
-	\centering{Table 3:The simulation result}\\
+	\centering{Table 3:Circle shaped bathtub simulation result}\\
 	\centering{(Environment:Initial water volume 200L,Room temperature 18$^{\circ}C$)}\\
 	\begin{tabular}{p{2cm}|p{2cm}|p{1.5cm}|p{3cm}|p{1cm}|p{2cm}}
 		\hline
