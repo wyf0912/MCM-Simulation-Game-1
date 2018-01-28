@@ -214,7 +214,7 @@ Q_{side}&=\int_{side}dQ\\
 \subsection{Influence of inflowing water on quantity of heat and volume}
 \indent First, we should establish an abstract model to describe the heating process.\\
 \indent The water in the bathtub is heated by the hot water flowing into it. So we should consider the energy and the volume of water in unit time. \\
-\indent Set the unit time flow of the faucet as $ dV $, and the temperature of the inflow water is $ t_{in}$. Because the  heat capacity of water changes in a very small degree, we can use $0^{\circ}$ as the reference point which means the relative quantity of heat is 0.\\
+\indent Set the unit time flow of the faucet as $ dV $, and the temperature of the inflow water is $ t_{in}$. Because the  heat capacity of water changes in a very small degree, we can use $0^{\circ}C$ as the reference point which means the relative quantity of heat is 0.\\
 \indent Compared to the energy reference, during unit time the energy of water poured in is:
 \begin{equation}
 	q_{in}=C\rho dVt_{in} 
@@ -295,8 +295,7 @@ D=Kd\times (T_{error}-T_{last_error})
 \caption{Only use Kp}
 \label{PID1}
 \end{figure}
-\indent We simulated the PID algorithm in the environment of under the condition of 18 C degrees at room temperature, the initial water quantity of 150L.
-
+\indent We simulated the PID algorithm in the environment of under the condition of $18.0^{\circ}C$ degrees at room temperature, the initial water quantity of 150L.\\
 \indent We found that only the use of P is not a good way to adjust the temperature of the water. For example, the subgraph (a) in figure \ref{PID1} shows the situation when Kp is small. There is a static difference between the expected temperature and the actual temperature. So we need to increase the value of Kp.\\
 \indent The subgraph (b) in figure \ref{PID1} shows when the Kp is increased, the temperature produces a high frequency shock\\
 
@@ -330,10 +329,25 @@ D=Kd\times (T_{error}-T_{last_error})
 \begin{figure}[H]	%图1.3
 	\centerline{\includegraphics[height=7cm]{process3.png}}
 	\caption{Single step simulation}
-	\label{[process]}
+	\label{process}
 \end{figure}
 \indent Figure \ref{process} shows the single step simulation. The simulation results of the last step will be used as the initial conditions for the next step. All of our simulations uses a step length of 1 second.\\
-\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
+\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}C$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
+\subsection{Simulation Conditions}
+\indent \textbf{If there is no special explanation, the basic simulation conditions are the same as above. The default bathtub shape is based on  circle.}
+\begin{itemize}
+	\item{Indoor temperature: $18.0^{\circ}C$ }
+	\item{The temperature of water inflow: $50.0^{\circ}C$ }
+	\item{The initial temperature of water in bathtub: $38.0^{\circ}C$ }
+	\item{The initial volume of water in bathtub: 200L(Circle bathtub), 150L(Oval bathtub).}
+	\item{The upper limit of water volume: 300L(circle bathtub), 260L(oval bathtub).}
+	\item{Atmospheric pressure $1.015 \times 10^{3} hPa$}
+	\item{Partial pressure of water vapor: 0.5 times of the current saturation pressure at indoor temperature}
+	\item{Partial pressure of water vapor: 0.5 times of the current saturation pressure at indoor temperature}
+	\item{The maximum water flux is 100ml/s. The temperature measurement precision of PID adjustment is $0.01^{\circ}C$, and the control frequency is 1 hertz}
+	\item{Indoor wind speed is set to 0}
+	\item{PID parameters: Kp = 0.002,Ki = 0.0001,Kd = 0.001}
+\end{itemize}
 \subsection{Model Testing}			%6.2 model test
 \indent First, we need to verify the accuracy of the heat dissipation model.
 We want to verify whether the model of the temperature change over time is in accordance with the actual situation.\\
