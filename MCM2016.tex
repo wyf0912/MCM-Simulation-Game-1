@@ -31,7 +31,7 @@
 \title{Keep the Bathtub Warm}
 \indent In this paper,  We build a model of the temperature of the bathtub water in space and time, analysis the impact of the bathtub's volume, shape and factors of people, then make a non-technical statement.\\
 \indent
-First, using the heat conduction formula, the heat convection formula and the formula of water surface evaporation, we build a basic heat dissipation model, including the dissipation of the surface of water and interface between water and bathtub. Through simulation, under the condition of $18^{\circ}C$ degrees at room temperature, the initial water quantity of 150L,  the water temperature is reduced by $3.5^{\circ}C$ for half an hour, which is basically consistent with the data provided by the merchant.\\ 
+First, to calculate the value of dissipated heat, we use the heat conduction formula, the heat convection formula and the formula of water surface evaporation, to build a basic heat dissipation model,  including the dissipation of the surface of water and interface between water and bathtub. Through simulation, under the condition of $18^{\circ}C$ degrees at room temperature, the initial water quantity of 150L,  the water temperature is reduced by $3.5^{\circ}C$ for half an hour, which is basically consistent with the data provided by the merchant.\\ 
 \indent In order to keep the temperature and save the water, we design two ways of water adding. The first type is to add water by manual adjustment, while the second type is to adjust the water automatically by PID. Under the same environmental conditions as the heat dissipation model, the conditions of the temperature measuring accuracy of 0.01 degrees and the upper limit of the water amount are added, and the simulation results are obtained as follows. Both two methods can make temperature fluctuations remain within the range ($0.1^{\circ}C$ ) when parameters are property. And the amount of water used by PID reduces by 8-13\% compared with manual adjustment. The second order central moment of two methods are 44.874 and 0.0296 (on condition of round bathtub, no bubbles, 30 minutes of bath time, no human body, 37.3ml/s water inflow speed, and PID adjustment)\\
 \indent The influence of human lies in the absorption of heat, the change of water level, and action. For calculating the effect of human surface area, we use Newton's law of cooling to calculate the heat absorbed by body.  We add a water overflow which volume equals to 0.1\% volume of person to simulate human action (per 30 seconds on average). The results show that the average water consumption when person in bathtub is about 4.76\% more than the condition of no person. (on condition of oval bathtub, no bubble, with action, PID adjustment)\\
 \indent
@@ -302,12 +302,12 @@ D=Kd\times (T_{error}-T_{last_error})
 
 \begin{figure}[H]
 \centering
-\subfigure[When Kp is too small]{
+\subfigure[When parameters are unsuitable]{
 \begin{minipage}{7cm}
 \centering \includegraphics[scale=0.26]{PID_2.png}       
 \end{minipage}
 }
-\subfigure[When Kp is too large]{
+\subfigure[When parameters are suitable]{
 \begin{minipage}{7cm}
 \centering                                    \includegraphics[scale=0.26]{PID_3.png}        
 \end{minipage}
@@ -318,16 +318,22 @@ D=Kd\times (T_{error}-T_{last_error})
 \indent We introduce the I and D items to reduce the frequency of the shock and make the water temperature as stable as possible. The subgraph (a) in figure \ref{PID2} shows when we introduce I, the static difference can be eliminated. \\
 \indent The subgraph (b) in figure \ref{PID2} shows when we also introduce the D item at the same time. The temperature trend becomes more stable.\\
 \section{Solutions for Tasks}
-\subsection{Model Implementation with Computer}
-\indent In the above, we've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
-\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
+\subsection{Model Simulation with Computer}
+\indent In the above paper, we've got a general model of heating and heat loss. Take advantage of the two general models we have already obtained, we established a simulation program built with Python. It can simulate the process of heating and heat loss. We can use the simulation program to solve the water temperature model of bathtub.\\
 \indent The figure below shows the process of simulation:
- \begin{figure}[H]
-\centerline{\includegraphics[height=7cm]{process.png}}
-\caption{the process of simulation}                  %流程图
-\label{oval}	
+\begin{figure}[H]	%图1.3
+	\centerline{\includegraphics[height=8.5cm]{process2.png}}
+	\caption{Interdependence of variables}
+	\label{interdependence}
 \end{figure}
-
+\indent A circle of dotted lines in Figure \ref{interdependence} may or may not exist. Arrows indicate the impact. $h(V),S_{1}(h),S_{2}(h),S_{3}(h)$ depend on the shape of bathtub. We can find that a change in a variable can lead to a series of changes. So we use \textbf{Object Oriented} design program met and take the bathtub as a \textbf{Class}. By using the \textbf{attribute mechanism} of Python, we solve the interdependence between variables. Different bathtubs are objects of different initial conditions for the class. The following picture shows the framework of the simulation.\\
+\begin{figure}[H]	%图1.3
+	\centerline{\includegraphics[height=7cm]{process3.png}}
+	\caption{Single step simulation}
+	\label{[process]}
+\end{figure}
+\indent Figure \ref{process} shows the single step simulation. The simulation results of the last step will be used as the initial conditions for the next step. All of our simulations uses a step length of 1 second.\\
+\indent The initial temperature of water is set at $38.0^{\circ}C$, the room temperature is set at $18.0^{\circ}$. And the amount of inflowing water is regarded as variable. We can change the value of it to control the amount of inflowing water.\\
 \subsection{Model Testing}			%6.2 model test
 \indent First, we need to verify the accuracy of the heat dissipation model.
 We want to verify whether the model of the temperature change over time is in accordance with the actual situation.\\
@@ -608,6 +614,7 @@ When we use \textbf{PID} to adjust the amount of water, by analyzing the Figure 
 	\setlength{\abovecaptionskip}{0pt}
 	\setlength{\belowcaptionskip}{0pt}
 	\centering{Table 3:The simulation result}\\
+	\centering{(Environment:Initial water volume 200L,Room temperature 18$^{\circ}C$)}\\
 	\begin{tabular}{p{2cm}|p{2cm}|p{1.5cm}|p{3cm}|p{1cm}|p{2cm}}
 		\hline
 		\rowcolor[gray]{0.9}\bf{water flow}	&\bf{Water consumption} &\bf{bubble}&\bf{body shape}&\bf{action}&\bf{temperature variance} \\
